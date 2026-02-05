@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:04",
   "day": "2026-02-02",
   "sales": [
     {
@@ -491,6 +491,31 @@
   },
   "sales_by_day": {
     "2026-02-02": 53434
+  },
+  "sales_by_month": {
+    "2026-02": 53434
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 52,
+      "total_cents": 41600
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 4,
+      "total_cents": 3200
+    },
+    "Picol\u00e9 de Jaca": {
+      "qty": 5,
+      "total_cents": 4000
+    },
+    "Sorvete kg": {
+      "qty": 1,
+      "total_cents": 2625
+    },
+    "Sorvete 2 bolas": {
+      "qty": 1,
+      "total_cents": 2200
+    }
   },
   "cash_sessions_closed": [
     {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:04",
   "day": "2026-02-03",
   "sales": [
     {
@@ -62,6 +62,35 @@
   "payments_summary": {},
   "sales_by_day": {
     "2026-02-03": 271344
+  },
+  "sales_by_month": {
+    "2026-02": 271344
+  },
+  "sales_by_product": {
+    "Sorvete kg": {
+      "qty": 26,
+      "total_cents": 265125
+    },
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 2,
+      "total_cents": 1600
+    },
+    "Milkshake 500 ml": {
+      "qty": 1,
+      "total_cents": 2000
+    },
+    "Picol\u00e9 de Ninho Trufado": {
+      "qty": 1,
+      "total_cents": 1000
+    },
+    "Coca cola": {
+      "qty": 1,
+      "total_cents": 600
+    },
+    "Sorvete 1 bola": {
+      "qty": 1,
+      "total_cents": 1200
+    }
   },
   "cash_sessions_closed": []
 }

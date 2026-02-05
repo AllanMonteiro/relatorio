@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:04",
   "day": "2026-01-28",
   "sales": [
     {
@@ -133,5 +133,9 @@
   "sales_by_day": {
     "2026-01-28": 0
   },
+  "sales_by_month": {
+    "2026-01": 0
+  },
+  "sales_by_product": {},
   "cash_sessions_closed": []
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:03",
   "day": "",
   "sales": [
     {
@@ -1256,6 +1256,56 @@
     "2026-01-13": 6400,
     "2026-01-10": 4600,
     "2026-01-11": 4600
+  },
+  "sales_by_month": {
+    "2026-02": 346400,
+    "2026-01": 39600
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Jaca": {
+      "qty": 27,
+      "total_cents": 23800
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 13,
+      "total_cents": 10400
+    },
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 71,
+      "total_cents": 56800
+    },
+    "Sorvete kg": {
+      "qty": 29,
+      "total_cents": 273525
+    },
+    "Sorvete 2 bolas": {
+      "qty": 1,
+      "total_cents": 2200
+    },
+    "Milkshake 500 ml": {
+      "qty": 6,
+      "total_cents": 12000
+    },
+    "Picol\u00e9 de Ninho Trufado": {
+      "qty": 3,
+      "total_cents": 3000
+    },
+    "Coca cola": {
+      "qty": 2,
+      "total_cents": 1200
+    },
+    "Sorvete 1 bola": {
+      "qty": 2,
+      "total_cents": 2400
+    },
+    "X bacon": {
+      "qty": 3,
+      "total_cents": 0
+    },
+    "Picol\u00e9 de ninho com morango": {
+      "qty": 1,
+      "total_cents": 1108
+    }
   },
   "cash_sessions_closed": [
     {

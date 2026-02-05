@@ -131,6 +131,14 @@
         <b>Pagamentos por método</b>
         <canvas id="chartPayByMethod" height="140"></canvas>
       </div>
+      <div class="card" style="width: 48%;">
+        <b>Vendas por mês</b>
+        <canvas id="chartSalesByMonth" height="140"></canvas>
+      </div>
+      <div class="card" style="width: 48%;">
+        <b>Vendas por produto (Top 10)</b>
+        <canvas id="chartSalesByProduct" height="140"></canvas>
+      </div>
     </div>
   </div>
 
@@ -263,6 +271,39 @@ function renderCharts() {
       data: {
         labels: pLabels,
         datasets: [{ label: "Recebido (R$)", data: pValues, backgroundColor: "#49f" }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+
+  const salesByMonth = REPORT.sales_by_month || {};
+  const mLabels = Object.keys(salesByMonth).sort();
+  const mValues = mLabels.map(m => (salesByMonth[m] || 0) / 100.0);
+  const ctx3 = document.getElementById("chartSalesByMonth");
+  if (ctx3) {
+    new Chart(ctx3, {
+      type: "bar",
+      data: {
+        labels: mLabels,
+        datasets: [{ label: "Vendas (R$)", data: mValues, backgroundColor: "#9c6" }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+
+  const salesByProduct = REPORT.sales_by_product || {};
+  const prodPairs = Object.keys(salesByProduct).map(k => [k, salesByProduct[k] || {total_cents:0}]);
+  prodPairs.sort((a,b) => (b[1].total_cents || 0) - (a[1].total_cents || 0));
+  const top = prodPairs.slice(0, 10);
+  const prodLabels = top.map(t => t[0]);
+  const prodValues = top.map(t => (t[1].total_cents || 0) / 100.0);
+  const ctx4 = document.getElementById("chartSalesByProduct");
+  if (ctx4) {
+    new Chart(ctx4, {
+      type: "bar",
+      data: {
+        labels: prodLabels,
+        datasets: [{ label: "Total (R$)", data: prodValues, backgroundColor: "#c69" }]
       },
       options: { responsive: true, plugins: { legend: { display: true } } }
     });

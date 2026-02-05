@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:03",
   "day": "2026-01-17",
   "sales": [
     {
@@ -93,6 +93,23 @@
   },
   "sales_by_day": {
     "2026-01-17": 7200
+  },
+  "sales_by_month": {
+    "2026-01": 7200
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 5,
+      "total_cents": 4000
+    },
+    "Picol\u00e9 de Jaca": {
+      "qty": 2,
+      "total_cents": 1600
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 2,
+      "total_cents": 1600
+    }
   },
   "cash_sessions_closed": [
     {

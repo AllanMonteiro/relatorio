@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:04",
   "day": "2026-01-24",
   "sales": [
     {
@@ -29,6 +29,15 @@
   },
   "sales_by_day": {
     "2026-01-24": 4800
+  },
+  "sales_by_month": {
+    "2026-01": 4800
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 6,
+      "total_cents": 4800
+    }
   },
   "cash_sessions_closed": [
     {

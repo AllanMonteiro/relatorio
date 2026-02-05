@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05 15:33:30",
+  "generated_at": "2026-02-05 15:43:04",
   "day": "2026-02-05",
   "sales": [
     {
@@ -107,6 +107,43 @@
   },
   "sales_by_day": {
     "2026-02-05": 21622
+  },
+  "sales_by_month": {
+    "2026-02": 21622
+  },
+  "sales_by_product": {
+    "X bacon": {
+      "qty": 3,
+      "total_cents": 0
+    },
+    "Milkshake 500 ml": {
+      "qty": 5,
+      "total_cents": 10000
+    },
+    "Coca cola": {
+      "qty": 1,
+      "total_cents": 600
+    },
+    "Sorvete 1 bola": {
+      "qty": 1,
+      "total_cents": 1200
+    },
+    "Sorvete kg": {
+      "qty": 2,
+      "total_cents": 5775
+    },
+    "Picol\u00e9 de Ninho Trufado": {
+      "qty": 2,
+      "total_cents": 2000
+    },
+    "Picol\u00e9 de Jaca": {
+      "qty": 2,
+      "total_cents": 1000
+    },
+    "Picol\u00e9 de ninho com morango": {
+      "qty": 1,
+      "total_cents": 1108
+    }
   },
   "cash_sessions_closed": [
     {
