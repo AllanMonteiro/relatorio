@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Relatorio - PDV</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./chart.min.js"></script>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     h1 { margin-bottom: 6px; }
@@ -96,6 +96,16 @@
   </div>
 
   <div id="payments" class="panel">
+    <div class="filters">
+      <div>
+        <label>Data inicial (fechamento)</label>
+        <input type="date" id="payDateFrom" />
+      </div>
+      <div>
+        <label>Data final (fechamento)</label>
+        <input type="date" id="payDateTo" />
+      </div>
+    </div>
     <div class="summary" id="paymentsSummary"></div>
   </div>
 
@@ -173,11 +183,23 @@ function loadReport() {
 function renderPayments() {
   const box = document.getElementById("paymentsSummary");
   box.innerHTML = "";
-  const sum = REPORT.payments_summary || {};
-  Object.keys(sum).sort().forEach(k => {
+  const from = document.getElementById("payDateFrom").value;
+  const to = document.getElementById("payDateTo").value;
+  const totals = {};
+  (REPORT.sales || []).forEach(s => {
+    const closedDate = (s.closed_at || s.created_at || "").slice(0, 10);
+    if (from && closedDate && closedDate < from) return;
+    if (to && closedDate && closedDate > to) return;
+    (s.payments || []).forEach(p => {
+      const m = (p.method || "").toUpperCase();
+      const net = (p.net_cents || 0);
+      totals[m] = (totals[m] || 0) + net;
+    });
+  });
+  Object.keys(totals).sort().forEach(k => {
     const div = document.createElement("div");
     div.className = "card";
-    div.innerHTML = "<b>" + k + "</b><div class='mono'>" + brl(sum[k]) + "</div>";
+    div.innerHTML = "<b>" + k + "</b><div class='mono'>" + brl(totals[k]) + "</div>";
     box.appendChild(div);
   });
 }
@@ -334,6 +356,9 @@ document.querySelectorAll(".tabs button").forEach(btn => {
 
 ["saleDateFrom","saleDateTo","saleStatus","saleCustomer","saleTable","salePayMethod"]
   .forEach(id => document.getElementById(id).addEventListener("input", renderSales));
+
+["payDateFrom","payDateTo"]
+  .forEach(id => document.getElementById(id).addEventListener("input", renderPayments));
 
 setTab("sales");
 loadReport();
