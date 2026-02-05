@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-02-05 15:33:30",
+  "day": "2026-01-11",
+  "sales": [
+    {
+      "id": 2,
+      "status": "CLOSED",
+      "created_at": "2026-01-10 01:42:45",
+      "closed_at": "2026-01-11 04:30:34",
+      "total_cents": 4600,
+      "discount_cents": 0,
+      "total_liquido_cents": 4600,
+      "total_paid_cents": 4600,
+      "cash_session_id": null,
+      "customer_name": "Allan Monteiro",
+      "table_label": "Mesa 1",
+      "payments": [
+        {
+          "method": "PIX",
+          "amount_cents": 4600,
+          "change_cents": 0,
+          "net_cents": 4600
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "PIX": 4600
+  },
+  "sales_by_day": {
+    "2026-01-11": 4600
+  },
+  "cash_sessions_closed": []
+}

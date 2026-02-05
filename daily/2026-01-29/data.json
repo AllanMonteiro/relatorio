@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-02-05 15:33:30",
+  "day": "2026-01-29",
+  "sales": [
+    {
+      "id": 32,
+      "status": "CANCELED",
+      "created_at": "2026-01-29 23:15:06",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 31,
+      "status": "CANCELED",
+      "created_at": "2026-01-29 23:15:06",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 30,
+      "status": "CANCELED",
+      "created_at": "2026-01-29 23:15:05",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    }
+  ],
+  "payments_summary": {},
+  "sales_by_day": {
+    "2026-01-29": 0
+  },
+  "cash_sessions_closed": []
+}

@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-02-05 15:33:30",
+  "day": "2026-01-18",
+  "sales": [
+    {
+      "id": 18,
+      "status": "CANCELED",
+      "created_at": "2026-01-18 20:50:58",
+      "closed_at": "",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "\u00e7c\u00e7as,v.c\u00e7d",
+      "table_label": "Mesa 5",
+      "payments": []
+    },
+    {
+      "id": 17,
+      "status": "CLOSED",
+      "created_at": "2026-01-18 18:37:51",
+      "closed_at": "2026-01-18 20:50:20",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 2400,
+      "cash_session_id": 3,
+      "customer_name": "Allan",
+      "table_label": "Mesa 1",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2400,
+          "change_cents": 0,
+          "net_cents": 2400
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "status": "CANCELED",
+      "created_at": "2026-01-18 18:37:32",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "Mesa 1",
+      "payments": []
+    }
+  ],
+  "payments_summary": {
+    "CASH": 2400
+  },
+  "sales_by_day": {
+    "2026-01-18": 4800
+  },
+  "cash_sessions_closed": [
+    {
+      "session_id": 3,
+      "opening_cash": 12200,
+      "cash_in": 8800,
+      "pix_in": 1600,
+      "card_in": 2400,
+      "mov_in": 0,
+      "mov_out": 0,
+      "expected_cash": 21000,
+      "counted_cash": 5000,
+      "diff_cash": -16000,
+      "opened_at": "2026-01-17 18:19:36",
+      "closed_at": "2026-01-18 20:55:47",
+      "notes": "Fechamento. Diferen\u00e7a: R$ -160,00"
+    }
+  ]
+}

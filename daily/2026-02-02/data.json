@@ -1,0 +1,527 @@
+{
+  "generated_at": "2026-02-05 15:33:30",
+  "day": "2026-02-02",
+  "sales": [
+    {
+      "id": 68,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 20:23:30",
+      "closed_at": "",
+      "total_cents": 5600,
+      "discount_cents": 0,
+      "total_liquido_cents": 5600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "KAKKAKAKAKA",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 67,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 20:18:47",
+      "closed_at": "",
+      "total_cents": 8600,
+      "discount_cents": 0,
+      "total_liquido_cents": 8600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Akkkkkk",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 66,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 20:18:16",
+      "closed_at": "",
+      "total_cents": 7425,
+      "discount_cents": 181,
+      "total_liquido_cents": 7244,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 65,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 19:45:51",
+      "closed_at": "2026-02-02 19:47:36",
+      "total_cents": 8000,
+      "discount_cents": 0,
+      "total_liquido_cents": 8000,
+      "total_paid_cents": 8000,
+      "cash_session_id": 9,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 8000,
+          "change_cents": 0,
+          "net_cents": 8000
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 16:27:21",
+      "closed_at": "2026-02-02 19:44:48",
+      "total_cents": 4000,
+      "discount_cents": 0,
+      "total_liquido_cents": 4000,
+      "total_paid_cents": 4000,
+      "cash_session_id": 9,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 4000,
+          "change_cents": 0,
+          "net_cents": 4000
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 16:21:02",
+      "closed_at": "2026-02-02 16:21:55",
+      "total_cents": 2400,
+      "discount_cents": 10,
+      "total_liquido_cents": 2390,
+      "total_paid_cents": 2390,
+      "cash_session_id": 9,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2390,
+          "change_cents": 0,
+          "net_cents": 2390
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 16:18:55",
+      "closed_at": "2026-02-02 16:19:34",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 2400,
+      "cash_session_id": 9,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2400,
+          "change_cents": 0,
+          "net_cents": 2400
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 16:12:18",
+      "closed_at": "2026-02-02 16:13:03",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 2400,
+      "cash_session_id": 9,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2400,
+          "change_cents": 0,
+          "net_cents": 2400
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 14:08:58",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",calmc,lam",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 59,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 14:08:52",
+      "closed_at": "",
+      "total_cents": 3200,
+      "discount_cents": 0,
+      "total_liquido_cents": 3200,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "allan knalfmal[",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 58,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 14:08:38",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "kkkkkkkkkkkk",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 57,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 03:07:23",
+      "closed_at": "",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 56,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 03:07:11",
+      "closed_at": "2026-02-02 03:09:56",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 1600,
+      "cash_session_id": 8,
+      "customer_name": "kkkkkkkkkkkk",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 1600,
+          "change_cents": 0,
+          "net_cents": 1600
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 03:02:21",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",,l,l,l,l",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 54,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 03:02:20",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",,l,l,l,l",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 53,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 03:02:11",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",,l,l,l,l",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 52,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 03:02:05",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",,l,l,l,l",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 51,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:58:07",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 50,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:57:19",
+      "closed_at": "",
+      "total_cents": 3200,
+      "discount_cents": 0,
+      "total_liquido_cents": 3200,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 49,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:34:37",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 48,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:34:27",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 47,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:34:27",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 46,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:34:13",
+      "closed_at": "",
+      "total_cents": 800,
+      "discount_cents": 0,
+      "total_liquido_cents": 800,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 45,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:33:12",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 44,
+      "status": "CLOSED",
+      "created_at": "2026-02-02 02:26:54",
+      "closed_at": "2026-02-02 02:28:08",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 1600,
+      "cash_session_id": 8,
+      "customer_name": "",
+      "table_label": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 1600,
+          "change_cents": 0,
+          "net_cents": 1600
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:26:19",
+      "closed_at": "",
+      "total_cents": 800,
+      "discount_cents": 0,
+      "total_liquido_cents": 800,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 42,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:16:39",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 41,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:16:39",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 40,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:16:38",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 39,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:16:37",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 38,
+      "status": "CANCELED",
+      "created_at": "2026-02-02 02:16:24",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "",
+      "payments": []
+    }
+  ],
+  "payments_summary": {
+    "CASH": 22390
+  },
+  "sales_by_day": {
+    "2026-02-02": 53434
+  },
+  "cash_sessions_closed": [
+    {
+      "session_id": 9,
+      "opening_cash": 100,
+      "cash_in": 19190,
+      "pix_in": 0,
+      "card_in": 0,
+      "mov_in": 0,
+      "mov_out": 0,
+      "expected_cash": 19290,
+      "counted_cash": 100,
+      "diff_cash": -19190,
+      "opened_at": "2026-02-02 16:12:47",
+      "closed_at": "2026-02-02 23:02:16",
+      "notes": "Fechamento. Diferen\u00e7a: R$ -191,90"
+    },
+    {
+      "session_id": 8,
+      "opening_cash": 100,
+      "cash_in": 3200,
+      "pix_in": 0,
+      "card_in": 0,
+      "mov_in": 0,
+      "mov_out": 0,
+      "expected_cash": 3300,
+      "counted_cash": 100,
+      "diff_cash": -3200,
+      "opened_at": "2026-02-02 02:27:22",
+      "closed_at": "2026-02-02 14:09:13",
+      "notes": "Fechamento. Diferen\u00e7a: R$ -32,00"
+    }
+  ]
+}
