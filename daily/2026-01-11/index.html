@@ -134,8 +134,8 @@
   <div id="charts" class="panel">
     <div class="summary">
       <div class="card" style="width: 48%;">
-        <b>Vendas por dia</b>
-        <canvas id="chartSalesByDay" height="140"></canvas>
+        <b>Vendas acumuladas por mês (ano)</b>
+        <canvas id="chartSalesByMonthCum" height="140"></canvas>
       </div>
       <div class="card" style="width: 48%;">
         <b>Pagamentos por método</b>
@@ -267,17 +267,20 @@ function renderSales() {
 }
 
 function renderCharts() {
-  const salesByDay = REPORT.sales_by_day || {};
-  const dayLabels = Object.keys(salesByDay).sort();
-  const dayValues = dayLabels.map(d => (salesByDay[d] || 0) / 100.0);
-
-  const ctx1 = document.getElementById("chartSalesByDay");
+  const salesByMonth = REPORT.sales_by_month || {};
+  const mLabels = Object.keys(salesByMonth).sort();
+  let acc = 0;
+  const mValuesAcc = mLabels.map(m => {
+    acc += (salesByMonth[m] || 0);
+    return acc / 100.0;
+  });
+  const ctx1 = document.getElementById("chartSalesByMonthCum");
   if (ctx1) {
     new Chart(ctx1, {
       type: "line",
       data: {
-        labels: dayLabels,
-        datasets: [{ label: "Vendas (R$)", data: dayValues, borderColor: "#2b7", fill: false }]
+        labels: mLabels,
+        datasets: [{ label: "Acumulado (R$)", data: mValuesAcc, borderColor: "#2b7", fill: false }]
       },
       options: { responsive: true, plugins: { legend: { display: true } } }
     });
@@ -298,16 +301,15 @@ function renderCharts() {
     });
   }
 
-  const salesByMonth = REPORT.sales_by_month || {};
-  const mLabels = Object.keys(salesByMonth).sort();
-  const mValues = mLabels.map(m => (salesByMonth[m] || 0) / 100.0);
+  const mLabels2 = mLabels;
+  const mValues2 = mLabels2.map(m => (salesByMonth[m] || 0) / 100.0);
   const ctx3 = document.getElementById("chartSalesByMonth");
   if (ctx3) {
     new Chart(ctx3, {
       type: "bar",
       data: {
-        labels: mLabels,
-        datasets: [{ label: "Vendas (R$)", data: mValues, backgroundColor: "#9c6" }]
+        labels: mLabels2,
+        datasets: [{ label: "Vendas (R$)", data: mValues2, backgroundColor: "#9c6" }]
       },
       options: { responsive: true, plugins: { legend: { display: true } } }
     });
