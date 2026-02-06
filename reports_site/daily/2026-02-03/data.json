@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-02-05 16:10:56",
+  "day": "2026-02-03",
+  "sales": [
+    {
+      "id": 72,
+      "status": "CANCELED",
+      "created_at": "2026-02-03 23:51:03",
+      "closed_at": "",
+      "total_cents": 7425,
+      "discount_cents": 181,
+      "total_liquido_cents": 7244,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 71,
+      "status": "CANCELED",
+      "created_at": "2026-02-03 01:58:31",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "541548",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 70,
+      "status": "CANCELED",
+      "created_at": "2026-02-03 01:49:54",
+      "closed_at": "",
+      "total_cents": 262500,
+      "discount_cents": 0,
+      "total_liquido_cents": 262500,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Allan",
+      "table_label": "",
+      "payments": []
+    },
+    {
+      "id": 69,
+      "status": "CANCELED",
+      "created_at": "2026-02-03 00:55:50",
+      "closed_at": "",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "mknkml",
+      "table_label": "",
+      "payments": []
+    }
+  ],
+  "payments_summary": {},
+  "sales_by_day": {
+    "2026-02-03": 271344
+  },
+  "sales_by_month": {
+    "2026-02": 271344
+  },
+  "sales_by_product": {
+    "Sorvete kg": {
+      "qty": 26,
+      "total_cents": 265125
+    },
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 2,
+      "total_cents": 1600
+    },
+    "Milkshake 500 ml": {
+      "qty": 1,
+      "total_cents": 2000
+    },
+    "Picol\u00e9 de Ninho Trufado": {
+      "qty": 1,
+      "total_cents": 1000
+    },
+    "Coca cola": {
+      "qty": 1,
+      "total_cents": 600
+    },
+    "Sorvete 1 bola": {
+      "qty": 1,
+      "total_cents": 1200
+    }
+  },
+  "cash_sessions_closed": []
+}

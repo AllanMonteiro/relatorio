@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-02-05 16:10:56",
+  "day": "2026-01-17",
+  "sales": [
+    {
+      "id": 15,
+      "status": "CLOSED",
+      "created_at": "2026-01-17 18:21:54",
+      "closed_at": "2026-01-17 18:22:35",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 2400,
+      "cash_session_id": 3,
+      "customer_name": "\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7",
+      "table_label": "Mesa 3",
+      "payments": [
+        {
+          "method": "CARD",
+          "amount_cents": 2400,
+          "change_cents": 0,
+          "net_cents": 2400
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "status": "CLOSED",
+      "created_at": "2026-01-17 18:20:22",
+      "closed_at": "2026-01-17 18:21:06",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 1600,
+      "cash_session_id": 3,
+      "customer_name": "4444444",
+      "table_label": "Mesa 2",
+      "payments": [
+        {
+          "method": "PIX",
+          "amount_cents": 1600,
+          "change_cents": 0,
+          "net_cents": 1600
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "status": "CANCELED",
+      "created_at": "2026-01-17 18:19:59",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": 3,
+      "customer_name": "",
+      "table_label": "Mesa 1",
+      "payments": []
+    },
+    {
+      "id": 12,
+      "status": "CLOSED",
+      "created_at": "2026-01-17 17:25:50",
+      "closed_at": "2026-01-17 18:21:17",
+      "total_cents": 3200,
+      "discount_cents": 0,
+      "total_liquido_cents": 3200,
+      "total_paid_cents": 6400,
+      "cash_session_id": 3,
+      "customer_name": "jjjjjjjj",
+      "table_label": "Mesa 1",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 3200,
+          "change_cents": 0,
+          "net_cents": 3200
+        },
+        {
+          "method": "CASH",
+          "amount_cents": 3200,
+          "change_cents": 0,
+          "net_cents": 3200
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 6400,
+    "PIX": 1600,
+    "CARD": 2400
+  },
+  "sales_by_day": {
+    "2026-01-17": 7200
+  },
+  "sales_by_month": {
+    "2026-01": 7200
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 5,
+      "total_cents": 4000
+    },
+    "Picol\u00e9 de Jaca": {
+      "qty": 2,
+      "total_cents": 1600
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 2,
+      "total_cents": 1600
+    }
+  },
+  "cash_sessions_closed": [
+    {
+      "session_id": 2,
+      "opening_cash": 10000,
+      "cash_in": 0,
+      "pix_in": 0,
+      "card_in": 0,
+      "mov_in": 0,
+      "mov_out": 1000,
+      "expected_cash": 9000,
+      "counted_cash": 12200,
+      "diff_cash": 3200,
+      "opened_at": "2026-01-16 01:42:54",
+      "closed_at": "2026-01-17 18:17:23",
+      "notes": "abertura\nFechamento. Diferen\u00e7a: R$ 0,00"
+    }
+  ]
+}

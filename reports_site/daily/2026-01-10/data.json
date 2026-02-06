@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-02-05 16:10:56",
+  "day": "2026-01-10",
+  "sales": [
+    {
+      "id": 3,
+      "status": "CANCELED",
+      "created_at": "2026-01-10 01:43:13",
+      "closed_at": "",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Ricardo",
+      "table_label": "Mesa 3",
+      "payments": []
+    },
+    {
+      "id": 1,
+      "status": "CLOSED",
+      "created_at": "2026-01-10 01:36:38",
+      "closed_at": "2026-01-10 01:37:42",
+      "total_cents": 3000,
+      "discount_cents": 0,
+      "total_liquido_cents": 3000,
+      "total_paid_cents": 3000,
+      "cash_session_id": null,
+      "customer_name": "",
+      "table_label": "Mesa 1",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 3000,
+          "change_cents": 0,
+          "net_cents": 3000
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 3000
+  },
+  "sales_by_day": {
+    "2026-01-10": 4600
+  },
+  "sales_by_month": {
+    "2026-01": 4600
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Jaca": {
+      "qty": 3,
+      "total_cents": 3800
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 1,
+      "total_cents": 800
+    }
+  },
+  "cash_sessions_closed": []
+}
