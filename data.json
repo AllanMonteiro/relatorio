@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-02-07 13:14:23",
+  "generated_at": "2026-02-07 20:58:05",
   "day": "",
   "sales": [
     {
       "id": 78,
-      "status": "CLOSED",
+      "status": "CANCELED",
       "created_at": "2026-02-07 16:13:18",
       "closed_at": "2026-02-07 16:13:37",
       "total_cents": 2008,
