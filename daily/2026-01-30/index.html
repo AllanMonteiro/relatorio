@@ -68,8 +68,8 @@
         <input type="text" id="saleCustomer" placeholder="Nome" />
       </div>
       <div>
-        <label>Mesa</label>
-        <input type="text" id="saleTable" placeholder="Mesa" />
+        <label>Telefone</label>
+        <input type="text" id="salePhone" placeholder="Telefone" />
       </div>
       <div>
         <label>Pagamento (metodo)</label>
@@ -82,7 +82,7 @@
           <th>ID</th>
           <th>Status</th>
           <th>Cliente</th>
-          <th>Mesa</th>
+          <th>Telefone</th>
           <th>Criado</th>
           <th>Fechado</th>
           <th>Total</th>
@@ -234,7 +234,7 @@ function renderSales() {
   const to = document.getElementById("saleDateTo").value;
   const status = document.getElementById("saleStatus").value.trim().toUpperCase();
   const customer = document.getElementById("saleCustomer").value.trim().toLowerCase();
-  const table = document.getElementById("saleTable").value.trim().toLowerCase();
+  const phone = document.getElementById("salePhone").value.trim().toLowerCase();
   const payMethod = document.getElementById("salePayMethod").value.trim().toUpperCase();
 
   (REPORT.sales || []).forEach(s => {
@@ -243,7 +243,7 @@ function renderSales() {
     if (to && closedDate && closedDate > to) return;
     if (status && (s.status || "").toUpperCase() !== status) return;
     if (customer && !(s.customer_name || "").toLowerCase().includes(customer)) return;
-    if (table && !(s.table_label || "").toLowerCase().includes(table)) return;
+    if (phone && !(s.customer_phone || "").toLowerCase().includes(phone)) return;
     if (payMethod) {
       const methods = (s.payments || []).map(p => (p.method || "").toUpperCase());
       if (!methods.includes(payMethod)) return;
@@ -254,7 +254,7 @@ function renderSales() {
       <td>${s.id}</td>
       <td>${s.status || ""}</td>
       <td>${s.customer_name || ""}</td>
-      <td>${s.table_label || ""}</td>
+      <td>${s.customer_phone || ""}</td>
       <td>${s.created_at || ""}</td>
       <td>${s.closed_at || ""}</td>
       <td>${brl(s.total_cents)}</td>
@@ -356,7 +356,7 @@ document.querySelectorAll(".tabs button").forEach(btn => {
   btn.addEventListener("click", () => setTab(btn.dataset.tab));
 });
 
-["saleDateFrom","saleDateTo","saleStatus","saleCustomer","saleTable","salePayMethod"]
+["saleDateFrom","saleDateTo","saleStatus","saleCustomer","salePhone","salePayMethod"]
   .forEach(id => document.getElementById(id).addEventListener("input", renderSales));
 
 ["payDateFrom","payDateTo"]

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-07 20:58:05",
+  "generated_at": "2026-02-08 22:17:55",
   "day": "2026-02-05",
   "sales": [
     {
@@ -13,7 +13,7 @@
       "total_paid_cents": 7108,
       "cash_session_id": 14,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -34,7 +34,7 @@
       "total_paid_cents": 1000,
       "cash_session_id": 11,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": [
         {
           "method": "DINHEIRO",
@@ -55,7 +55,7 @@
       "total_paid_cents": 939,
       "cash_session_id": 10,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -76,7 +76,7 @@
       "total_paid_cents": 6150,
       "cash_session_id": 10,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -97,7 +97,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "1151515151",
-      "table_label": "",
+      "customer_phone": "911161515",
       "payments": []
     }
   ],

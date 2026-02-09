@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-07 20:58:05",
+  "generated_at": "2026-02-08 22:17:55",
   "day": "2026-01-28",
   "sales": [
     {
@@ -13,7 +13,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -27,7 +27,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -41,7 +41,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -55,7 +55,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -69,7 +69,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -83,7 +83,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -97,7 +97,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -111,7 +111,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -125,7 +125,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     }
   ],

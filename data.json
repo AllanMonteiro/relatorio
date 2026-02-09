@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-07 20:58:05",
+  "generated_at": "2026-02-08 22:17:55",
   "day": "",
   "sales": [
     {
@@ -13,7 +13,7 @@
       "total_paid_cents": 2008,
       "cash_session_id": 14,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "PIX",
@@ -34,7 +34,7 @@
       "total_paid_cents": 7108,
       "cash_session_id": 14,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -55,7 +55,7 @@
       "total_paid_cents": 1000,
       "cash_session_id": 11,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": [
         {
           "method": "DINHEIRO",
@@ -76,7 +76,7 @@
       "total_paid_cents": 939,
       "cash_session_id": 10,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -97,7 +97,7 @@
       "total_paid_cents": 6150,
       "cash_session_id": 10,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -118,7 +118,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "1151515151",
-      "table_label": "",
+      "customer_phone": "911161515",
       "payments": []
     },
     {
@@ -132,7 +132,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -146,7 +146,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "541548",
-      "table_label": "",
+      "customer_phone": "2222222",
       "payments": []
     },
     {
@@ -160,7 +160,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -174,7 +174,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "mknkml",
-      "table_label": "",
+      "customer_phone": "59646454",
       "payments": []
     },
     {
@@ -188,7 +188,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "KAKKAKAKAKA",
-      "table_label": "",
+      "customer_phone": "444444444",
       "payments": []
     },
     {
@@ -202,7 +202,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Akkkkkk",
-      "table_label": "",
+      "customer_phone": "9999999999",
       "payments": []
     },
     {
@@ -216,7 +216,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -230,7 +230,7 @@
       "total_paid_cents": 8000,
       "cash_session_id": 9,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -251,7 +251,7 @@
       "total_paid_cents": 4000,
       "cash_session_id": 9,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -272,7 +272,7 @@
       "total_paid_cents": 2390,
       "cash_session_id": 9,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -293,7 +293,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": 9,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -314,7 +314,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": 9,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -335,7 +335,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",calmc,lam",
-      "table_label": "",
+      "customer_phone": ",cafclma,lcas",
       "payments": []
     },
     {
@@ -349,7 +349,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "allan knalfmal[",
-      "table_label": "",
+      "customer_phone": "1222222",
       "payments": []
     },
     {
@@ -363,7 +363,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "kkkkkkkkkkkk",
-      "table_label": "",
+      "customer_phone": "11111111111111",
       "payments": []
     },
     {
@@ -377,7 +377,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7",
-      "table_label": "",
+      "customer_phone": "22222222222227",
       "payments": []
     },
     {
@@ -391,7 +391,7 @@
       "total_paid_cents": 1600,
       "cash_session_id": 8,
       "customer_name": "kkkkkkkkkkkk",
-      "table_label": "",
+      "customer_phone": "11111111111111",
       "payments": [
         {
           "method": "CASH",
@@ -412,7 +412,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",,l,l,l,l",
-      "table_label": "",
+      "customer_phone": "956261262",
       "payments": []
     },
     {
@@ -426,7 +426,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",,l,l,l,l",
-      "table_label": "",
+      "customer_phone": "956261262",
       "payments": []
     },
     {
@@ -440,7 +440,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",,l,l,l,l",
-      "table_label": "",
+      "customer_phone": "956261262",
       "payments": []
     },
     {
@@ -454,7 +454,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",,l,l,l,l",
-      "table_label": "",
+      "customer_phone": "956261262",
       "payments": []
     },
     {
@@ -468,7 +468,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -482,7 +482,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -496,7 +496,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -510,7 +510,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -524,7 +524,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -538,7 +538,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -552,7 +552,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "",
+      "customer_phone": "91991960525",
       "payments": []
     },
     {
@@ -566,7 +566,7 @@
       "total_paid_cents": 1600,
       "cash_session_id": 8,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": [
         {
           "method": "CASH",
@@ -587,7 +587,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -601,7 +601,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -615,7 +615,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -629,7 +629,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -643,7 +643,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -657,7 +657,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -671,7 +671,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -685,7 +685,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -699,7 +699,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -713,7 +713,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -727,7 +727,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -741,7 +741,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -755,7 +755,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -769,7 +769,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -783,7 +783,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -797,7 +797,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -811,7 +811,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -825,7 +825,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -839,7 +839,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -853,7 +853,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -867,7 +867,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -881,7 +881,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -895,7 +895,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -909,7 +909,7 @@
       "total_paid_cents": 4800,
       "cash_session_id": 7,
       "customer_name": "Allan",
-      "table_label": "Mesa 1",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -930,7 +930,7 @@
       "total_paid_cents": 1600,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "Mesa 1",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -951,7 +951,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "\u00e7c\u00e7as,v.c\u00e7d",
-      "table_label": "Mesa 5",
+      "customer_phone": "9999999999999999999999",
       "payments": []
     },
     {
@@ -965,7 +965,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": 3,
       "customer_name": "Allan",
-      "table_label": "Mesa 1",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -986,7 +986,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -1000,7 +1000,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": 3,
       "customer_name": "\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7",
-      "table_label": "Mesa 3",
+      "customer_phone": "55555555555555kk",
       "payments": [
         {
           "method": "CARD",
@@ -1021,7 +1021,7 @@
       "total_paid_cents": 1600,
       "cash_session_id": 3,
       "customer_name": "4444444",
-      "table_label": "Mesa 2",
+      "customer_phone": "55555555555555",
       "payments": [
         {
           "method": "PIX",
@@ -1042,7 +1042,7 @@
       "total_paid_cents": 0,
       "cash_session_id": 3,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -1056,7 +1056,7 @@
       "total_paid_cents": 6400,
       "cash_session_id": 3,
       "customer_name": "jjjjjjjj",
-      "table_label": "Mesa 1",
+      "customer_phone": "99999999999",
       "payments": [
         {
           "method": "CASH",
@@ -1083,7 +1083,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": null,
       "customer_name": "Allan",
-      "table_label": "Mesa 1",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
@@ -1104,7 +1104,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "kkkkkkkkk",
-      "table_label": "Mesa 5",
+      "customer_phone": "11111111111",
       "payments": []
     },
     {
@@ -1118,7 +1118,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Vitoria",
-      "table_label": "Mesa 10",
+      "customer_phone": "01999955555",
       "payments": []
     },
     {
@@ -1132,7 +1132,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": ",l\u00e7,l\u00e7,",
-      "table_label": "Mesa 7",
+      "customer_phone": "knknkknkn",
       "payments": []
     },
     {
@@ -1146,7 +1146,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -1160,7 +1160,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Carlos",
-      "table_label": "Mesa 4",
+      "customer_phone": "099111111111",
       "payments": []
     },
     {
@@ -1174,7 +1174,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "1111111",
-      "table_label": "Mesa 1",
+      "customer_phone": "1111111111111111111",
       "payments": []
     },
     {
@@ -1188,7 +1188,7 @@
       "total_paid_cents": 4000,
       "cash_session_id": null,
       "customer_name": "Allan Monteiro",
-      "table_label": "Mesa 1",
+      "customer_phone": "091991960525",
       "payments": [
         {
           "method": "CASH",
@@ -1209,7 +1209,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Ricardo",
-      "table_label": "Mesa 3",
+      "customer_phone": "999999999999999",
       "payments": []
     },
     {
@@ -1223,7 +1223,7 @@
       "total_paid_cents": 4600,
       "cash_session_id": null,
       "customer_name": "Allan Monteiro",
-      "table_label": "Mesa 1",
+      "customer_phone": "091991960525",
       "payments": [
         {
           "method": "PIX",
@@ -1244,7 +1244,7 @@
       "total_paid_cents": 3000,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": [
         {
           "method": "CASH",
@@ -1334,6 +1334,21 @@
     }
   },
   "cash_sessions_closed": [
+    {
+      "session_id": 14,
+      "opening_cash": 10000,
+      "cash_in": 0,
+      "pix_in": 0,
+      "card_in": 0,
+      "mov_in": 11000,
+      "mov_out": 0,
+      "expected_cash": 21000,
+      "counted_cash": 21000,
+      "diff_cash": 0,
+      "opened_at": "2026-02-05 14:43:46",
+      "closed_at": "2026-02-09 01:17:54",
+      "notes": "Fechamento. Diferen\u00e7a: R$ 0,00"
+    },
     {
       "session_id": 13,
       "opening_cash": 10000,

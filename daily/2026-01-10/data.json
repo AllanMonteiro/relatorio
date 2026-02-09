@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-07 20:58:05",
+  "generated_at": "2026-02-08 22:17:55",
   "day": "2026-01-10",
   "sales": [
     {
@@ -13,7 +13,7 @@
       "total_paid_cents": 0,
       "cash_session_id": null,
       "customer_name": "Ricardo",
-      "table_label": "Mesa 3",
+      "customer_phone": "999999999999999",
       "payments": []
     },
     {
@@ -27,7 +27,7 @@
       "total_paid_cents": 3000,
       "cash_session_id": null,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": [
         {
           "method": "CASH",

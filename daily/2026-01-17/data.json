@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-07 20:58:05",
+  "generated_at": "2026-02-08 22:17:55",
   "day": "2026-01-17",
   "sales": [
     {
@@ -13,7 +13,7 @@
       "total_paid_cents": 2400,
       "cash_session_id": 3,
       "customer_name": "\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7\u00e7",
-      "table_label": "Mesa 3",
+      "customer_phone": "55555555555555kk",
       "payments": [
         {
           "method": "CARD",
@@ -34,7 +34,7 @@
       "total_paid_cents": 1600,
       "cash_session_id": 3,
       "customer_name": "4444444",
-      "table_label": "Mesa 2",
+      "customer_phone": "55555555555555",
       "payments": [
         {
           "method": "PIX",
@@ -55,7 +55,7 @@
       "total_paid_cents": 0,
       "cash_session_id": 3,
       "customer_name": "",
-      "table_label": "Mesa 1",
+      "customer_phone": "",
       "payments": []
     },
     {
@@ -69,7 +69,7 @@
       "total_paid_cents": 6400,
       "cash_session_id": 3,
       "customer_name": "jjjjjjjj",
-      "table_label": "Mesa 1",
+      "customer_phone": "99999999999",
       "payments": [
         {
           "method": "CASH",
