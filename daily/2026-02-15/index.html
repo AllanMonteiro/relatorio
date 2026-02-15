@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relatorio - PDV</title>
+  <script src="./chart.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { margin-bottom: 6px; }
+    .meta { color: #555; margin-bottom: 16px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .tabs button { padding: 8px 12px; cursor: pointer; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
+    th { background: #f5f5f5; }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+    .filters label { font-size: 12px; color: #333; display: block; }
+    .filters input, .filters select { padding: 4px 6px; }
+    .summary { display: flex; gap: 12px; flex-wrap: wrap; }
+    .card { border: 1px solid #ddd; padding: 8px 10px; border-radius: 6px; }
+    .mono { font-family: Consolas, monospace; }
+    .history a { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Relatorio PDV</h1>
+  <div class="meta" id="generatedAt">Gerado em: -</div>
+  <div class="meta" id="reportDay"></div>
+
+  <div class="tabs">
+    <button data-tab="sales">Vendas</button>
+    <button data-tab="payments">Resumo por Pagamento</button>
+    <button data-tab="cash">Fechamento de Caixa</button>
+    <button data-tab="charts">Graficos</button>
+    <button data-tab="history">Historico</button>
+  </div>
+
+  <div id="sales" class="panel">
+    <div class="filters">
+      <div>
+        <label>Data inicial (fechamento)</label>
+        <input type="date" id="saleDateFrom" />
+      </div>
+      <div>
+        <label>Data final (fechamento)</label>
+        <input type="date" id="saleDateTo" />
+      </div>
+      <div>
+        <label>Status</label>
+        <select id="saleStatus">
+          <option value="">Todos</option>
+          <option value="OPEN">OPEN</option>
+          <option value="IN_PREP">IN_PREP</option>
+          <option value="READY">READY</option>
+          <option value="CLOSED">CLOSED</option>
+          <option value="CANCELED">CANCELED</option>
+          <option value="ABERTA">ABERTA</option>
+          <option value="PENDENTE_PAGAMENTO">PENDENTE_PAGAMENTO</option>
+          <option value="FINALIZADA">FINALIZADA</option>
+          <option value="CANCELADA">CANCELADA</option>
+        </select>
+      </div>
+      <div>
+        <label>Cliente</label>
+        <input type="text" id="saleCustomer" placeholder="Nome" />
+      </div>
+      <div>
+        <label>Telefone</label>
+        <input type="text" id="salePhone" placeholder="Telefone" />
+      </div>
+      <div>
+        <label>Pagamento (metodo)</label>
+        <input type="text" id="salePayMethod" placeholder="CASH/PIX/CARD" />
+      </div>
+    </div>
+    <table id="salesTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Cliente</th>
+          <th>Telefone</th>
+          <th>Criado</th>
+          <th>Fechado</th>
+          <th>Total</th>
+          <th>Desconto</th>
+          <th>Total Liquido</th>
+          <th>Total Pago</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div id="payments" class="panel">
+    <div class="filters">
+      <div>
+        <label>Data inicial (fechamento)</label>
+        <input type="date" id="payDateFrom" />
+      </div>
+      <div>
+        <label>Data final (fechamento)</label>
+        <input type="date" id="payDateTo" />
+      </div>
+    </div>
+    <div class="summary" id="paymentsSummary"></div>
+  </div>
+
+  <div id="cash" class="panel">
+    <table id="cashTable">
+      <thead>
+        <tr>
+          <th>Sessao</th>
+          <th>Aberto</th>
+          <th>Fechado</th>
+          <th>Fundo</th>
+          <th>Cash</th>
+          <th>Pix</th>
+          <th>Cartao</th>
+          <th>Reforcos</th>
+          <th>Sangrias</th>
+          <th>Esperado</th>
+          <th>Contado</th>
+          <th>Diferenca</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div id="charts" class="panel">
+    <div class="summary">
+      <div class="card" style="width: 48%;">
+        <b>Vendas acumuladas por mês (ano)</b>
+        <canvas id="chartSalesByMonthCum" height="140"></canvas>
+      </div>
+      <div class="card" style="width: 48%;">
+        <b>Pagamentos por método</b>
+        <canvas id="chartPayByMethod" height="140"></canvas>
+      </div>
+      <div class="card" style="width: 48%;">
+        <b>Vendas por mês</b>
+        <canvas id="chartSalesByMonth" height="140"></canvas>
+      </div>
+      <div class="card" style="width: 48%;">
+        <b>Vendas por produto (Top 10)</b>
+        <canvas id="chartSalesByProduct" height="140"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="history" class="panel">
+    <div class="history" id="historyLinks"></div>
+  </div>
+
+<script>
+let REPORT = null;
+const brl = (c) => "R$ " + (c/100).toFixed(2).replace(".", ",");
+
+function setTab(id) {
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function loadReport() {
+  fetch("./data.json")
+    .then(r => r.json())
+    .then(data => {
+      REPORT = data;
+      document.getElementById("generatedAt").innerText = "Gerado em: " + data.generated_at;
+      document.getElementById("reportDay").innerText = data.day ? ("Dia: " + data.day) : "";
+      renderPayments();
+      renderCash();
+      renderSales();
+      renderCharts();
+      renderHistory();
+    });
+}
+
+function renderPayments() {
+  const box = document.getElementById("paymentsSummary");
+  box.innerHTML = "";
+  const from = document.getElementById("payDateFrom").value;
+  const to = document.getElementById("payDateTo").value;
+  const totals = {};
+  (REPORT.sales || []).forEach(s => {
+    const closedDate = (s.closed_at || s.created_at || "").slice(0, 10);
+    if (from && closedDate && closedDate < from) return;
+    if (to && closedDate && closedDate > to) return;
+    (s.payments || []).forEach(p => {
+      const m = (p.method || "").toUpperCase();
+      const net = (p.net_cents || 0);
+      totals[m] = (totals[m] || 0) + net;
+    });
+  });
+  Object.keys(totals).sort().forEach(k => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = "<b>" + k + "</b><div class='mono'>" + brl(totals[k]) + "</div>";
+    box.appendChild(div);
+  });
+}
+
+function renderCash() {
+  const tb = document.querySelector("#cashTable tbody");
+  tb.innerHTML = "";
+  (REPORT.cash_sessions_closed || []).forEach(c => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${c.session_id}</td>
+      <td>${c.opened_at || ""}</td>
+      <td>${c.closed_at || ""}</td>
+      <td>${brl(c.opening_cash)}</td>
+      <td>${brl(c.cash_in)}</td>
+      <td>${brl(c.pix_in)}</td>
+      <td>${brl(c.card_in)}</td>
+      <td>${brl(c.mov_in)}</td>
+      <td>${brl(c.mov_out)}</td>
+      <td>${brl(c.expected_cash)}</td>
+      <td>${brl(c.counted_cash)}</td>
+      <td>${brl(c.diff_cash)}</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function renderSales() {
+  const tb = document.querySelector("#salesTable tbody");
+  tb.innerHTML = "";
+  const from = document.getElementById("saleDateFrom").value;
+  const to = document.getElementById("saleDateTo").value;
+  const status = document.getElementById("saleStatus").value.trim().toUpperCase();
+  const customer = document.getElementById("saleCustomer").value.trim().toLowerCase();
+  const phone = document.getElementById("salePhone").value.trim().toLowerCase();
+  const payMethod = document.getElementById("salePayMethod").value.trim().toUpperCase();
+
+  (REPORT.sales || []).forEach(s => {
+    const closedDate = (s.closed_at || "").slice(0, 10);
+    if (from && closedDate && closedDate < from) return;
+    if (to && closedDate && closedDate > to) return;
+    if (status && (s.status || "").toUpperCase() !== status) return;
+    if (customer && !(s.customer_name || "").toLowerCase().includes(customer)) return;
+    if (phone && !(s.customer_phone || "").toLowerCase().includes(phone)) return;
+    if (payMethod) {
+      const methods = (s.payments || []).map(p => (p.method || "").toUpperCase());
+      if (!methods.includes(payMethod)) return;
+    }
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${s.id}</td>
+      <td>${s.status || ""}</td>
+      <td>${s.customer_name || ""}</td>
+      <td>${s.customer_phone || ""}</td>
+      <td>${s.created_at || ""}</td>
+      <td>${s.closed_at || ""}</td>
+      <td>${brl(s.total_cents)}</td>
+      <td>${brl(s.discount_cents)}</td>
+      <td>${brl(s.total_liquido_cents)}</td>
+      <td>${brl(s.total_paid_cents)}</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function renderCharts() {
+  const salesByMonth = REPORT.sales_by_month || {};
+  const mLabels = Object.keys(salesByMonth).sort();
+  let acc = 0;
+  const mValuesAcc = mLabels.map(m => {
+    acc += (salesByMonth[m] || 0);
+    return acc / 100.0;
+  });
+  const ctx1 = document.getElementById("chartSalesByMonthCum");
+  if (ctx1) {
+    new Chart(ctx1, {
+      type: "line",
+      data: {
+        labels: mLabels,
+        datasets: [{ label: "Acumulado (R$)", data: mValuesAcc, borderColor: "#2b7", fill: false }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+
+  const pay = REPORT.payments_summary || {};
+  const pLabels = Object.keys(pay).sort();
+  const pValues = pLabels.map(k => (pay[k] || 0) / 100.0);
+  const ctx2 = document.getElementById("chartPayByMethod");
+  if (ctx2) {
+    new Chart(ctx2, {
+      type: "bar",
+      data: {
+        labels: pLabels,
+        datasets: [{ label: "Recebido (R$)", data: pValues, backgroundColor: "#49f" }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+
+  const mLabels2 = mLabels;
+  const mValues2 = mLabels2.map(m => (salesByMonth[m] || 0) / 100.0);
+  const ctx3 = document.getElementById("chartSalesByMonth");
+  if (ctx3) {
+    new Chart(ctx3, {
+      type: "bar",
+      data: {
+        labels: mLabels2,
+        datasets: [{ label: "Vendas (R$)", data: mValues2, backgroundColor: "#9c6" }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+
+  const salesByProduct = REPORT.sales_by_product || {};
+  const prodPairs = Object.keys(salesByProduct).map(k => [k, salesByProduct[k] || {total_cents:0}]);
+  prodPairs.sort((a,b) => (b[1].total_cents || 0) - (a[1].total_cents || 0));
+  const top = prodPairs.slice(0, 10);
+  const prodLabels = top.map(t => t[0]);
+  const prodValues = top.map(t => (t[1].total_cents || 0) / 100.0);
+  const ctx4 = document.getElementById("chartSalesByProduct");
+  if (ctx4) {
+    new Chart(ctx4, {
+      type: "bar",
+      data: {
+        labels: prodLabels,
+        datasets: [{ label: "Total (R$)", data: prodValues, backgroundColor: "#c69" }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  }
+}
+
+function renderHistory() {
+  const box = document.getElementById("historyLinks");
+  if (!box) return;
+  box.innerHTML = "";
+  const days = Object.keys(REPORT.sales_by_day || {}).sort().reverse();
+  if (!days.length) {
+    box.innerText = "Sem historico.";
+    return;
+  }
+  days.forEach(d => {
+    const a = document.createElement("a");
+    a.href = "./daily/" + d + "/index.html";
+    a.innerText = d;
+    a.target = "_blank";
+    box.appendChild(a);
+  });
+}
+
+document.querySelectorAll(".tabs button").forEach(btn => {
+  btn.addEventListener("click", () => setTab(btn.dataset.tab));
+});
+
+["saleDateFrom","saleDateTo","saleStatus","saleCustomer","salePhone","salePayMethod"]
+  .forEach(id => document.getElementById(id).addEventListener("input", renderSales));
+
+["payDateFrom","payDateTo"]
+  .forEach(id => document.getElementById(id).addEventListener("input", renderPayments));
+
+setTab("sales");
+loadReport();
+</script>
+</body>
+</html>

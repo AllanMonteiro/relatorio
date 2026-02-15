@@ -1,7 +1,28 @@
 {
-  "generated_at": "2026-02-08 22:17:55",
+  "generated_at": "2026-02-15 19:17:13",
   "day": "",
   "sales": [
+    {
+      "id": 79,
+      "status": "CLOSED",
+      "created_at": "2026-02-15 22:15:56",
+      "closed_at": "2026-02-15 22:17:13",
+      "total_cents": 4008,
+      "discount_cents": 0,
+      "total_liquido_cents": 4008,
+      "total_paid_cents": 4008,
+      "cash_session_id": 15,
+      "customer_name": "Allan",
+      "customer_phone": "91991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 4008,
+          "change_cents": 0,
+          "net_cents": 4008
+        }
+      ]
+    },
     {
       "id": 78,
       "status": "CANCELED",
@@ -1256,12 +1277,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 61187,
+    "CASH": 65195,
     "PIX": 8208,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
+    "2026-02-15": 4008,
     "2026-02-07": 2008,
     "2026-02-05": 21622,
     "2026-02-03": 271344,
@@ -1280,7 +1302,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-02": 348408,
+    "2026-02": 352416,
     "2026-01": 39600
   },
   "sales_by_product": {
@@ -1305,8 +1327,8 @@
       "total_cents": 2200
     },
     "Milkshake 500 ml": {
-      "qty": 6,
-      "total_cents": 12000
+      "qty": 7,
+      "total_cents": 14000
     },
     "Picol\u00e9 de Ninho Trufado": {
       "qty": 3,
@@ -1321,16 +1343,16 @@
       "total_cents": 2400
     },
     "X bacon": {
-      "qty": 3,
+      "qty": 4,
       "total_cents": 0
     },
     "Picol\u00e9 de ninho com morango": {
-      "qty": 2,
-      "total_cents": 2216
+      "qty": 3,
+      "total_cents": 3324
     },
     "Cerveja 330 ml": {
-      "qty": 1,
-      "total_cents": 900
+      "qty": 2,
+      "total_cents": 1800
     }
   },
   "cash_sessions_closed": [
