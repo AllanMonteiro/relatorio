@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-15 19:17:13",
+  "generated_at": "2026-02-16 09:29:54",
   "day": "2026-01-18",
   "sales": [
     {
@@ -81,6 +81,8 @@
       "opening_cash": 12200,
       "cash_in": 8800,
       "pix_in": 1600,
+      "card_debit_in": 0,
+      "card_credit_in": 2400,
       "card_in": 2400,
       "mov_in": 0,
       "mov_out": 0,

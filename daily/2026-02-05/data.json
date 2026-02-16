@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-15 19:17:13",
+  "generated_at": "2026-02-16 09:29:55",
   "day": "2026-02-05",
   "sales": [
     {
@@ -151,6 +151,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -166,6 +168,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -181,6 +185,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -196,6 +202,8 @@
       "opening_cash": 100,
       "cash_in": 7089,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,

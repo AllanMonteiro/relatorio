@@ -1,7 +1,28 @@
 {
-  "generated_at": "2026-02-15 19:17:13",
+  "generated_at": "2026-02-16 09:29:54",
   "day": "",
   "sales": [
+    {
+      "id": 80,
+      "status": "CLOSED",
+      "created_at": "2026-02-16 12:29:17",
+      "closed_at": "2026-02-16 12:29:54",
+      "total_cents": 2900,
+      "discount_cents": 0,
+      "total_liquido_cents": 2900,
+      "total_paid_cents": 2900,
+      "cash_session_id": 15,
+      "customer_name": "Allan Monteiro",
+      "customer_phone": "914991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2900,
+          "change_cents": 0,
+          "net_cents": 2900
+        }
+      ]
+    },
     {
       "id": 79,
       "status": "CLOSED",
@@ -1277,12 +1298,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 65195,
+    "CASH": 68095,
     "PIX": 8208,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
+    "2026-02-16": 2900,
     "2026-02-15": 4008,
     "2026-02-07": 2008,
     "2026-02-05": 21622,
@@ -1302,7 +1324,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-02": 352416,
+    "2026-02": 355316,
     "2026-01": 39600
   },
   "sales_by_product": {
@@ -1327,8 +1349,8 @@
       "total_cents": 2200
     },
     "Milkshake 500 ml": {
-      "qty": 7,
-      "total_cents": 14000
+      "qty": 8,
+      "total_cents": 16000
     },
     "Picol\u00e9 de Ninho Trufado": {
       "qty": 3,
@@ -1343,7 +1365,7 @@
       "total_cents": 2400
     },
     "X bacon": {
-      "qty": 4,
+      "qty": 5,
       "total_cents": 0
     },
     "Picol\u00e9 de ninho com morango": {
@@ -1351,8 +1373,8 @@
       "total_cents": 3324
     },
     "Cerveja 330 ml": {
-      "qty": 2,
-      "total_cents": 1800
+      "qty": 3,
+      "total_cents": 2700
     }
   },
   "cash_sessions_closed": [
@@ -1361,6 +1383,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 11000,
       "mov_out": 0,
@@ -1376,6 +1400,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1391,6 +1417,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1406,6 +1434,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1421,6 +1451,8 @@
       "opening_cash": 100,
       "cash_in": 7089,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1436,6 +1468,8 @@
       "opening_cash": 100,
       "cash_in": 19190,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1451,6 +1485,8 @@
       "opening_cash": 100,
       "cash_in": 3200,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1466,6 +1502,8 @@
       "opening_cash": 10000,
       "cash_in": 4800,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 10000,
       "mov_out": 10000,
@@ -1481,6 +1519,8 @@
       "opening_cash": 100000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1496,6 +1536,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1511,6 +1553,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 0,
@@ -1526,6 +1570,8 @@
       "opening_cash": 12200,
       "cash_in": 8800,
       "pix_in": 1600,
+      "card_debit_in": 0,
+      "card_credit_in": 2400,
       "card_in": 2400,
       "mov_in": 0,
       "mov_out": 0,
@@ -1541,6 +1587,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 1000,
@@ -1556,6 +1604,8 @@
       "opening_cash": 10000,
       "cash_in": 0,
       "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
       "card_in": 0,
       "mov_in": 0,
       "mov_out": 500,
