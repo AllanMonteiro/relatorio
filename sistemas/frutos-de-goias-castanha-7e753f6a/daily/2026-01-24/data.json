@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-02-16 15:33:47",
+  "day": "2026-01-24",
+  "sales": [
+    {
+      "id": 20,
+      "status": "CLOSED",
+      "created_at": "2026-01-23 01:38:12",
+      "closed_at": "2026-01-24 22:53:05",
+      "total_cents": 4800,
+      "discount_cents": 0,
+      "total_liquido_cents": 4800,
+      "total_paid_cents": 4800,
+      "cash_session_id": 7,
+      "customer_name": "Allan",
+      "customer_phone": "91991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 4800,
+          "change_cents": 0,
+          "net_cents": 4800
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 4800
+  },
+  "sales_by_day": {
+    "2026-01-24": 4800
+  },
+  "sales_by_month": {
+    "2026-01": 4800
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Caja Manga": {
+      "qty": 6,
+      "total_cents": 4800
+    }
+  },
+  "cash_sessions_closed": [
+    {
+      "session_id": 7,
+      "opening_cash": 10000,
+      "cash_in": 4800,
+      "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
+      "card_in": 0,
+      "mov_in": 10000,
+      "mov_out": 10000,
+      "expected_cash": 14800,
+      "counted_cash": 14800,
+      "diff_cash": 0,
+      "opened_at": "2026-01-24 22:52:32",
+      "closed_at": "2026-01-24 22:53:23",
+      "notes": "Abertura do caixaFechamento. Diferen\u00e7a: R$ 0,00"
+    }
+  ]
+}

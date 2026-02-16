@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-02-16 15:33:47",
+  "day": "2026-01-11",
+  "sales": [
+    {
+      "id": 2,
+      "status": "CLOSED",
+      "created_at": "2026-01-10 01:42:45",
+      "closed_at": "2026-01-11 04:30:34",
+      "total_cents": 4600,
+      "discount_cents": 0,
+      "total_liquido_cents": 4600,
+      "total_paid_cents": 4600,
+      "cash_session_id": null,
+      "customer_name": "Allan Monteiro",
+      "customer_phone": "091991960525",
+      "payments": [
+        {
+          "method": "PIX",
+          "amount_cents": 4600,
+          "change_cents": 0,
+          "net_cents": 4600
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "PIX": 4600
+  },
+  "sales_by_day": {
+    "2026-01-11": 4600
+  },
+  "sales_by_month": {
+    "2026-01": 4600
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Jaca": {
+      "qty": 3,
+      "total_cents": 3800
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 1,
+      "total_cents": 800
+    }
+  },
+  "cash_sessions_closed": []
+}
