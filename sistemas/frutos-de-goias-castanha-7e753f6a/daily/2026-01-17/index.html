@@ -19,6 +19,8 @@
     .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
     .filters label { font-size: 12px; color: #333; display: block; }
     .filters input, .filters select { padding: 4px 6px; }
+    .dangerBtn { background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 5px 9px; cursor: pointer; }
+    .dangerBtn:hover { background: #a93226; }
     .summary { display: flex; gap: 12px; flex-wrap: wrap; }
     .card { border: 1px solid #ddd; padding: 8px 10px; border-radius: 6px; }
     .mono { font-family: Consolas, monospace; }
@@ -76,6 +78,7 @@
         <input type="text" id="salePayMethod" placeholder="CASH/PIX/CARD_DEBIT/CARD_CREDIT" />
       </div>
     </div>
+    <div class="meta" id="deleteHint"></div>
     <table id="salesTable">
       <thead>
         <tr>
@@ -89,6 +92,7 @@
           <th>Desconto</th>
           <th>Total Liquido</th>
           <th>Total Pago</th>
+          <th>Acoes</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -158,6 +162,7 @@
 
 <script>
 let REPORT = null;
+const LOCAL_API_BASE = "http://127.0.0.1:8765";
 const brl = (c) => "R$ " + (c/100).toFixed(2).replace(".", ",");
 
 function setTab(id) {
@@ -166,18 +171,51 @@ function setTab(id) {
 }
 
 function loadReport() {
-  fetch("./data.json")
+  return fetch("./data.json")
     .then(r => r.json())
     .then(data => {
       REPORT = data;
       document.getElementById("generatedAt").innerText = "Gerado em: " + data.generated_at;
       document.getElementById("reportDay").innerText = data.day ? ("Dia: " + data.day) : "";
+      const hint = document.getElementById("deleteHint");
+      if (hint) {
+        hint.innerText = "Excluir venda na base: requer o sistema desktop aberto neste mesmo computador.";
+      }
       renderPayments();
       renderCash();
       renderSales();
       renderCharts();
       renderHistory();
     });
+}
+
+async function deleteSaleInBase(orderId) {
+  if (!REPORT || !REPORT.report_instance_id) {
+    alert("Instancia do relatorio nao identificada.");
+    return;
+  }
+  if (!confirm("Excluir venda #" + orderId + " da base local?")) {
+    return;
+  }
+  try {
+    const resp = await fetch(LOCAL_API_BASE + "/api/delete_order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Report-Instance": REPORT.report_instance_id
+      },
+      body: JSON.stringify({ order_id: orderId })
+    });
+    let data = {};
+    try { data = await resp.json(); } catch (_e) {}
+    if (!resp.ok || !data.ok) {
+      throw new Error((data && data.error) ? data.error : ("HTTP " + resp.status));
+    }
+    alert("Venda excluida da base com sucesso.");
+    await loadReport();
+  } catch (e) {
+    alert("Falha ao excluir na base: " + e + "\nVerifique se o sistema desktop esta aberto.");
+  }
 }
 
 function renderPayments() {
@@ -261,6 +299,7 @@ function renderSales() {
       <td>${brl(s.discount_cents)}</td>
       <td>${brl(s.total_liquido_cents)}</td>
       <td>${brl(s.total_paid_cents)}</td>
+      <td><button class="dangerBtn" onclick="deleteSaleInBase(${s.id})">Excluir</button></td>
     `;
     tb.appendChild(tr);
   });
