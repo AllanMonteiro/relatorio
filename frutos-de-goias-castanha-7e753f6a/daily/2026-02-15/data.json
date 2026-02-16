@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-02-16 15:33:48",
+  "day": "2026-02-15",
+  "sales": [
+    {
+      "id": 79,
+      "status": "CLOSED",
+      "created_at": "2026-02-15 22:15:56",
+      "closed_at": "2026-02-15 22:17:13",
+      "total_cents": 4008,
+      "discount_cents": 0,
+      "total_liquido_cents": 4008,
+      "total_paid_cents": 4008,
+      "cash_session_id": 15,
+      "customer_name": "Allan",
+      "customer_phone": "91991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 4008,
+          "change_cents": 0,
+          "net_cents": 4008
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 4008
+  },
+  "sales_by_day": {
+    "2026-02-15": 4008
+  },
+  "sales_by_month": {
+    "2026-02": 4008
+  },
+  "sales_by_product": {
+    "Cerveja 330 ml": {
+      "qty": 1,
+      "total_cents": 900
+    },
+    "X bacon": {
+      "qty": 1,
+      "total_cents": 0
+    },
+    "Milkshake 500 ml": {
+      "qty": 1,
+      "total_cents": 2000
+    },
+    "Picol\u00e9 de ninho com morango": {
+      "qty": 1,
+      "total_cents": 1108
+    }
+  },
+  "cash_sessions_closed": []
+}

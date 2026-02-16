@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-02-16 15:33:48",
+  "day": "2026-02-16",
+  "sales": [
+    {
+      "id": 80,
+      "status": "CLOSED",
+      "created_at": "2026-02-16 12:29:17",
+      "closed_at": "2026-02-16 12:29:54",
+      "total_cents": 2900,
+      "discount_cents": 0,
+      "total_liquido_cents": 2900,
+      "total_paid_cents": 2900,
+      "cash_session_id": 15,
+      "customer_name": "Allan Monteiro",
+      "customer_phone": "914991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 2900,
+          "change_cents": 0,
+          "net_cents": 2900
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 2900
+  },
+  "sales_by_day": {
+    "2026-02-16": 2900
+  },
+  "sales_by_month": {
+    "2026-02": 2900
+  },
+  "sales_by_product": {
+    "Cerveja 330 ml": {
+      "qty": 1,
+      "total_cents": 900
+    },
+    "X bacon": {
+      "qty": 1,
+      "total_cents": 0
+    },
+    "Milkshake 500 ml": {
+      "qty": 1,
+      "total_cents": 2000
+    }
+  },
+  "cash_sessions_closed": []
+}
