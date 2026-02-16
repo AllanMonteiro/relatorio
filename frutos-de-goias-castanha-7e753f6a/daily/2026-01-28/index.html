@@ -162,7 +162,6 @@
 
 <script>
 let REPORT = null;
-const LOCAL_API_BASE = "http://127.0.0.1:8765";
 const brl = (c) => "R$ " + (c/100).toFixed(2).replace(".", ",");
 
 function setTab(id) {
@@ -179,7 +178,10 @@ function loadReport() {
       document.getElementById("reportDay").innerText = data.day ? ("Dia: " + data.day) : "";
       const hint = document.getElementById("deleteHint");
       if (hint) {
-        hint.innerText = "Excluir venda na base: requer o sistema desktop aberto neste mesmo computador.";
+        const apiBase = getDeleteApiBase();
+        hint.innerText = apiBase
+          ? ("Excluir venda na base: API " + apiBase)
+          : "Excluir venda na base: configure URL da API remota nas Configuracoes do sistema.";
       }
       renderPayments();
       renderCash();
@@ -189,20 +191,63 @@ function loadReport() {
     });
 }
 
+function getDeleteApiBase() {
+  if (!REPORT) return "";
+  const raw = (REPORT.delete_api_url || "").trim();
+  return raw.replace(/\/+$/, "");
+}
+
+function getTokenStorageKey() {
+  const rid = (REPORT && REPORT.report_instance_id) ? REPORT.report_instance_id : "default";
+  return "relatorio_delete_token_" + rid;
+}
+
+function getDeleteToken() {
+  try {
+    return localStorage.getItem(getTokenStorageKey()) || "";
+  } catch (_e) {
+    return "";
+  }
+}
+
+function setDeleteToken(token) {
+  try {
+    localStorage.setItem(getTokenStorageKey(), token || "");
+  } catch (_e) {}
+}
+
 async function deleteSaleInBase(orderId) {
-  if (!REPORT || !REPORT.report_instance_id) {
-    alert("Instancia do relatorio nao identificada.");
+  if (!REPORT) {
+    alert("Relatorio ainda nao carregado.");
     return;
   }
   if (!confirm("Excluir venda #" + orderId + " da base local?")) {
     return;
   }
+  const apiBase = getDeleteApiBase();
+  if (!apiBase) {
+    alert("API de exclusao nao configurada. Ajuste em Configuracoes do sistema.");
+    return;
+  }
+  if (location.protocol === "https:" && apiBase.toLowerCase().startsWith("http://")) {
+    alert("URL da API precisa ser HTTPS quando o relatorio roda no GitHub Pages.");
+    return;
+  }
+  let token = getDeleteToken();
+  if (!token) {
+    token = (prompt("Informe o token da API para excluir vendas:") || "").trim();
+    if (!token) {
+      alert("Token obrigatorio.");
+      return;
+    }
+    setDeleteToken(token);
+  }
   try {
-    const resp = await fetch(LOCAL_API_BASE + "/api/delete_order", {
+    const resp = await fetch(apiBase + "/api/delete_order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Report-Instance": REPORT.report_instance_id
+        "X-Delete-Token": token
       },
       body: JSON.stringify({ order_id: orderId })
     });
@@ -214,7 +259,7 @@ async function deleteSaleInBase(orderId) {
     alert("Venda excluida da base com sucesso.");
     await loadReport();
   } catch (e) {
-    alert("Falha ao excluir na base: " + e + "\nVerifique se o sistema desktop esta aberto.");
+    alert("Falha ao excluir na base: " + e + "\nVerifique API HTTPS/token e sistema desktop online.");
   }
 }
 
