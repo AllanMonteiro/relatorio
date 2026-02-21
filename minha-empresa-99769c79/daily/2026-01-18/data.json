@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 11:16:37",
+  "generated_at": "2026-02-21 11:29:20",
   "day": "2026-01-18",
   "report_instance_id": "minha-empresa-99769c79",
   "delete_api_url": "",
@@ -77,23 +77,5 @@
       "total_cents": 800
     }
   },
-  "cash_sessions_closed": [
-    {
-      "session_id": 3,
-      "opening_cash": 12200,
-      "cash_in": 8800,
-      "pix_in": 1600,
-      "card_debit_in": 0,
-      "card_credit_in": 2400,
-      "card_in": 2400,
-      "mov_in": 0,
-      "mov_out": 0,
-      "expected_cash": 21000,
-      "counted_cash": 5000,
-      "diff_cash": -16000,
-      "opened_at": "2026-01-17 18:19:36",
-      "closed_at": "2026-01-18 20:55:47",
-      "notes": "Fechamento. Diferen\u00e7a: R$ -160,00"
-    }
-  ]
+  "cash_sessions_closed": []
 }
