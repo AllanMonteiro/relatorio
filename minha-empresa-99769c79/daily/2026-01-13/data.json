@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-02-21 11:13:07",
+  "day": "2026-01-13",
+  "report_instance_id": "minha-empresa-99769c79",
+  "delete_api_url": "",
+  "sales": [
+    {
+      "id": 6,
+      "status": "CANCELED",
+      "created_at": "2026-01-13 23:56:51",
+      "closed_at": "",
+      "total_cents": 800,
+      "discount_cents": 0,
+      "total_liquido_cents": 800,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Carlos",
+      "customer_phone": "099111111111",
+      "payments": []
+    },
+    {
+      "id": 5,
+      "status": "CANCELED",
+      "created_at": "2026-01-13 19:19:05",
+      "closed_at": "",
+      "total_cents": 1600,
+      "discount_cents": 0,
+      "total_liquido_cents": 1600,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "1111111",
+      "customer_phone": "1111111111111111111",
+      "payments": []
+    },
+    {
+      "id": 4,
+      "status": "CLOSED",
+      "created_at": "2026-01-11 04:33:04",
+      "closed_at": "2026-01-13 14:37:46",
+      "total_cents": 4000,
+      "discount_cents": 0,
+      "total_liquido_cents": 4000,
+      "total_paid_cents": 4000,
+      "cash_session_id": null,
+      "customer_name": "Allan Monteiro",
+      "customer_phone": "091991960525",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 4000,
+          "change_cents": 0,
+          "net_cents": 4000
+        }
+      ]
+    }
+  ],
+  "payments_summary": {
+    "CASH": 4000
+  },
+  "sales_by_day": {
+    "2026-01-13": 6400
+  },
+  "sales_by_month": {
+    "2026-01": 6400
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Manga": {
+      "qty": 2,
+      "total_cents": 1600
+    },
+    "Picol\u00e9 de Jaca": {
+      "qty": 6,
+      "total_cents": 4800
+    }
+  },
+  "cash_sessions_closed": []
+}

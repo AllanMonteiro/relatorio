@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-02-21 11:13:07",
+  "day": "2026-01-14",
+  "report_instance_id": "minha-empresa-99769c79",
+  "delete_api_url": "",
+  "sales": [
+    {
+      "id": 10,
+      "status": "CANCELED",
+      "created_at": "2026-01-14 23:07:42",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "kkkkkkkkk",
+      "customer_phone": "11111111111",
+      "payments": []
+    },
+    {
+      "id": 9,
+      "status": "CANCELED",
+      "created_at": "2026-01-14 13:05:56",
+      "closed_at": "",
+      "total_cents": 2400,
+      "discount_cents": 0,
+      "total_liquido_cents": 2400,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "Vitoria",
+      "customer_phone": "01999955555",
+      "payments": []
+    },
+    {
+      "id": 8,
+      "status": "CANCELED",
+      "created_at": "2026-01-14 01:43:08",
+      "closed_at": "",
+      "total_cents": 800,
+      "discount_cents": 0,
+      "total_liquido_cents": 800,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": ",l\u00e7,l\u00e7,",
+      "customer_phone": "knknkknkn",
+      "payments": []
+    },
+    {
+      "id": 7,
+      "status": "CANCELED",
+      "created_at": "2026-01-14 01:42:53",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": null,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": []
+    }
+  ],
+  "payments_summary": {},
+  "sales_by_day": {
+    "2026-01-14": 3200
+  },
+  "sales_by_month": {
+    "2026-01": 3200
+  },
+  "sales_by_product": {
+    "Picol\u00e9 de Jaca": {
+      "qty": 3,
+      "total_cents": 2400
+    },
+    "Picol\u00e9 de Manga": {
+      "qty": 1,
+      "total_cents": 800
+    }
+  },
+  "cash_sessions_closed": []
+}
