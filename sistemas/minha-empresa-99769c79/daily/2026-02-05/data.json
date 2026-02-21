@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 11:16:38",
+  "generated_at": "2026-02-21 11:29:20",
   "day": "2026-02-05",
   "report_instance_id": "minha-empresa-99769c79",
   "delete_api_url": "",
@@ -147,74 +147,5 @@
       "total_cents": 1108
     }
   },
-  "cash_sessions_closed": [
-    {
-      "session_id": 13,
-      "opening_cash": 10000,
-      "cash_in": 0,
-      "pix_in": 0,
-      "card_debit_in": 0,
-      "card_credit_in": 0,
-      "card_in": 0,
-      "mov_in": 0,
-      "mov_out": 0,
-      "expected_cash": 10000,
-      "counted_cash": 10000,
-      "diff_cash": 0,
-      "opened_at": "2026-02-05 14:04:05",
-      "closed_at": "2026-02-05 14:43:28",
-      "notes": "Fechamento. Diferen\u00e7a: R$ 0,00"
-    },
-    {
-      "session_id": 12,
-      "opening_cash": 10000,
-      "cash_in": 0,
-      "pix_in": 0,
-      "card_debit_in": 0,
-      "card_credit_in": 0,
-      "card_in": 0,
-      "mov_in": 0,
-      "mov_out": 0,
-      "expected_cash": 10000,
-      "counted_cash": 10000,
-      "diff_cash": 0,
-      "opened_at": "2026-02-05 12:51:46",
-      "closed_at": "2026-02-05 13:01:55",
-      "notes": "Fechamento. Diferen\u00e7a: R$ 0,00"
-    },
-    {
-      "session_id": 11,
-      "opening_cash": 10000,
-      "cash_in": 0,
-      "pix_in": 0,
-      "card_debit_in": 0,
-      "card_credit_in": 0,
-      "card_in": 0,
-      "mov_in": 0,
-      "mov_out": 0,
-      "expected_cash": 10000,
-      "counted_cash": 11000,
-      "diff_cash": 1000,
-      "opened_at": "2026-02-05 12:41:20",
-      "closed_at": "2026-02-05 12:41:20",
-      "notes": ""
-    },
-    {
-      "session_id": 10,
-      "opening_cash": 100,
-      "cash_in": 7089,
-      "pix_in": 0,
-      "card_debit_in": 0,
-      "card_credit_in": 0,
-      "card_in": 0,
-      "mov_in": 0,
-      "mov_out": 0,
-      "expected_cash": 7189,
-      "counted_cash": 1000,
-      "diff_cash": -6189,
-      "opened_at": "2026-02-05 00:54:01",
-      "closed_at": "2026-02-05 12:12:07",
-      "notes": "Fechamento. Diferen\u00e7a: R$ -61,89\nJustificativa: erro contagem"
-    }
-  ]
+  "cash_sessions_closed": []
 }
