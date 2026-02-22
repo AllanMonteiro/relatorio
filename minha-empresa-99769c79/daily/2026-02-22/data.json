@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-21 21:04:20",
-  "day": "2026-01-13",
+  "generated_at": "2026-02-21 21:04:21",
+  "day": "2026-02-22",
   "report_instance_id": "minha-empresa-99769c79",
   "company_name": "Minha Empresa",
   "company_legal_name": "",
@@ -9,130 +9,72 @@
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
     {
-      "id": 6,
-      "status": "CANCELED",
-      "created_at": "2026-01-13 23:56:51",
-      "closed_at": "",
-      "total_cents": 800,
-      "discount_cents": 0,
-      "total_liquido_cents": 800,
-      "total_paid_cents": 0,
-      "cash_session_id": null,
-      "customer_name": "Carlos",
-      "customer_phone": "099111111111",
-      "payments": [],
-      "items": [
-        {
-          "name": "Picol\u00e9 de Jaca",
-          "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Manga"
-        }
-      ],
-      "items_count": 1
-    },
-    {
-      "id": 5,
-      "status": "CANCELED",
-      "created_at": "2026-01-13 19:19:05",
-      "closed_at": "",
-      "total_cents": 1600,
-      "discount_cents": 0,
-      "total_liquido_cents": 1600,
-      "total_paid_cents": 0,
-      "cash_session_id": null,
-      "customer_name": "1111111",
-      "customer_phone": "1111111111111111111",
-      "payments": [],
-      "items": [
-        {
-          "name": "Picol\u00e9 de Jaca",
-          "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Jaca"
-        },
-        {
-          "name": "Picol\u00e9 de Manga",
-          "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Manga"
-        }
-      ],
-      "items_count": 2
-    },
-    {
-      "id": 4,
+      "id": 83,
       "status": "CLOSED",
-      "created_at": "2026-01-11 04:33:04",
-      "closed_at": "2026-01-13 14:37:46",
-      "total_cents": 4000,
+      "created_at": "2026-02-22 00:03:35",
+      "closed_at": "2026-02-22 00:04:19",
+      "total_cents": 2900,
       "discount_cents": 0,
-      "total_liquido_cents": 4000,
-      "total_paid_cents": 4000,
-      "cash_session_id": null,
-      "customer_name": "Allan Monteiro",
-      "customer_phone": "091991960525",
+      "total_liquido_cents": 2900,
+      "total_paid_cents": 2900,
+      "cash_session_id": 17,
+      "customer_name": "Allan",
+      "customer_phone": "91991960525",
       "payments": [
         {
           "method": "CASH",
-          "amount_cents": 4000,
+          "amount_cents": 2900,
           "change_cents": 0,
-          "net_cents": 4000
+          "net_cents": 2900
         }
       ],
       "items": [
         {
-          "name": "Picol\u00e9 de Manga",
+          "name": "Cerveja 330 ml",
           "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Manga"
+          "unit_price_cents": 900,
+          "total_cents": 900,
+          "notes": "Cerveja 330 ml"
         },
         {
-          "name": "Picol\u00e9 de Jaca",
+          "name": "X bacon",
           "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Jaca"
+          "unit_price_cents": 0,
+          "total_cents": 0,
+          "notes": "X bacon"
         },
         {
-          "name": "Picol\u00e9 de Jaca",
+          "name": "Milkshake 500 ml",
           "qty": 1,
-          "unit_price_cents": 800,
-          "total_cents": 800,
-          "notes": "Picol\u00e9 de Jaca"
-        },
-        {
-          "name": "Picol\u00e9 de Jaca",
-          "qty": 2,
-          "unit_price_cents": 800,
-          "total_cents": 1600,
-          "notes": "Picol\u00e9 de Jaca"
+          "unit_price_cents": 2000,
+          "total_cents": 2000,
+          "notes": "Milkshake 500 ml"
         }
       ],
-      "items_count": 5
+      "items_count": 3
     }
   ],
   "payments_summary": {
-    "CASH": 4000
+    "CASH": 2900
   },
   "sales_by_day": {
-    "2026-01-13": 6400
+    "2026-02-22": 2900
   },
   "sales_by_month": {
-    "2026-01": 6400
+    "2026-02": 2900
   },
   "sales_by_product": {
-    "Picol\u00e9 de Manga": {
-      "qty": 2,
-      "total_cents": 1600
+    "Cerveja 330 ml": {
+      "qty": 1,
+      "total_cents": 900
     },
-    "Picol\u00e9 de Jaca": {
-      "qty": 6,
-      "total_cents": 4800
+    "X bacon": {
+      "qty": 1,
+      "total_cents": 0
+    },
+    "Milkshake 500 ml": {
+      "qty": 1,
+      "total_cents": 2000
     }
   },
   "cash_sessions_closed": []

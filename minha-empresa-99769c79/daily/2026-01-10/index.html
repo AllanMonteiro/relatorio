@@ -5,196 +5,1361 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Relatorio - PDV</title>
   <script src="./chart.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="./firebase-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 6px; }
-    .meta { color: #555; margin-bottom: 16px; }
-    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
-    .tabs button { padding: 8px 12px; cursor: pointer; }
-    .panel { display: none; }
-    .panel.active { display: block; }
-    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
-    th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
-    th { background: #f5f5f5; }
-    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
-    .filters label { font-size: 12px; color: #333; display: block; }
-    .filters input, .filters select { padding: 4px 6px; }
-    .dangerBtn { background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 5px 9px; cursor: pointer; }
-    .dangerBtn:hover { background: #a93226; }
-    .summary { display: flex; gap: 12px; flex-wrap: wrap; }
-    .card { border: 1px solid #ddd; padding: 8px 10px; border-radius: 6px; }
-    .mono { font-family: Consolas, monospace; }
-    .history a { margin-right: 10px; }
+    :root {
+      --bg: #f6f3ed;
+      --surface: #fffdf8;
+      --surface-2: #ffffff;
+      --text: #1f2a2a;
+      --text-strong: #162424;
+      --muted: #667472;
+      --brand: #0e8a7a;
+      --brand-2: #0b7568;
+      --brand-soft: #d8efe9;
+      --brand-soft-2: #edf8f5;
+      --gold-soft: #f7e8d7;
+      --line: #dbe3df;
+      --danger: #bf3c2f;
+      --danger-2: #9a2e24;
+      --radius: 14px;
+      --shadow: 0 18px 45px rgba(16, 40, 36, 0.10);
+      --shadow-soft: 0 8px 22px rgba(16, 40, 36, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at -5% -8%, #e3f3ee 0%, transparent 60%),
+        radial-gradient(900px 420px at 105% -10%, #fcead8 0%, transparent 60%),
+        linear-gradient(90deg, rgba(32, 79, 71, 0.04) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, auto, 24px 24px, auto;
+      line-height: 1.45;
+    }
+    #reportApp {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(1200px 420px at 10% -22%, rgba(201, 236, 227, 0.55) 0%, transparent 58%),
+        radial-gradient(900px 320px at 102% -24%, rgba(247, 226, 200, 0.65) 0%, transparent 62%),
+        var(--surface);
+    }
+    #reportApp::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--brand), #19a894, #f0b474);
+      pointer-events: none;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(24px, 4vw, 34px);
+      letter-spacing: -0.03em;
+    }
+    .meta {
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .topRow {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff 0%, #fcfffd 100%);
+      border-radius: 16px;
+      padding: 14px;
+      margin-top: 4px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+    .topRowRight {
+      min-width: 220px;
+      text-align: right;
+    }
+    .brandHead {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .companyLogoWrap {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      border: 1px solid #d1e3de;
+      background: #fff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      overflow: hidden;
+    }
+    .companyLogoWrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .appTag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #17584f;
+      background: var(--brand-soft);
+      border: 1px solid #baded6;
+      margin-bottom: 8px;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 14px 0 18px;
+      flex-wrap: wrap;
+      padding: 8px;
+      border-radius: 14px;
+      border: 1px solid #e3ebe7;
+      background: rgba(255, 253, 248, 0.84);
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 8px;
+      z-index: 7;
+    }
+    .tabs button {
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .tabs button:hover {
+      transform: translateY(-1px);
+      border-color: #b8c9c3;
+      background: #f7fbfa;
+    }
+    .tabs button.active {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 8px 22px rgba(14, 138, 122, 0.28);
+    }
+    .panel {
+      display: none;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(16, 40, 36, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #24a28f, #d6eee8);
+      opacity: 0.85;
+    }
+    .panel.active {
+      display: block;
+      animation: panelIn 0.2s ease-out;
+    }
+    .panelHead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .panelTitle {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .panelSub {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .kpiGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 2px 0 14px;
+    }
+    .kpiCard {
+      position: relative;
+      border: 1px solid #dce7e3;
+      border-radius: 14px;
+      padding: 12px 12px 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fdfb 100%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      animation: panelIn 0.25s ease-out;
+    }
+    .kpiCard::after {
+      content: "";
+      position: absolute;
+      right: -22px;
+      top: -26px;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: rgba(14, 138, 122, 0.10);
+    }
+    .kpiCard.alt::after { background: rgba(193, 106, 47, 0.14); }
+    .kpiLabel {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #46625d;
+      margin-bottom: 7px;
+      position: relative;
+      z-index: 1;
+    }
+    .kpiValue {
+      font-size: clamp(18px, 2.7vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-strong);
+      position: relative;
+      z-index: 1;
+    }
+    .kpiHint {
+      margin-top: 2px;
+      color: #61726f;
+      font-weight: 600;
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin: 8px 0 12px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #e8eeeb;
+      background: #fcfffe;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    .filters label {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+    .filters input,
+    .filters select {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+    .filters input:focus,
+    .filters select:focus {
+      border-color: #7bb7aa;
+      box-shadow: 0 0 0 3px rgba(14, 138, 122, 0.12);
+    }
+    .filters input::placeholder {
+      color: #8ba09b;
+    }
+    #chartPeriodInfo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand-soft);
+      color: #13564f;
+      border: 1px solid #b7ddd4;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .tableWrap {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: auto;
+      background: #fff;
+      margin-top: 8px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+    .tableWrap::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    .tableWrap::-webkit-scrollbar-track {
+      background: #f2f7f5;
+      border-radius: 999px;
+    }
+    .tableWrap::-webkit-scrollbar-thumb {
+      background: #c0d7d0;
+      border-radius: 999px;
+      border: 2px solid #f2f7f5;
+    }
+    .tableWrap::-webkit-scrollbar-thumb:hover {
+      background: #9fc0b6;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      min-width: 760px;
+      margin-top: 0;
+      background: #fff;
+    }
+    th, td {
+      border-bottom: 1px solid #edf2f0;
+      padding: 10px 10px;
+      text-align: left;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, #f5fbf9 0%, #eef7f3 100%);
+      color: #25413d;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) { background: #fbfdfa; }
+    tbody tr:hover { background: #f3faf8; }
+    .emptyRow {
+      text-align: center;
+      color: #60706d;
+      font-weight: 600;
+      padding: 14px;
+    }
+    .statusBadge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 1px solid transparent;
+    }
+    .statusBadge.is-finish {
+      color: #0f594f;
+      background: #e4f5f1;
+      border-color: #b7e0d7;
+    }
+    .statusBadge.is-progress {
+      color: #7d4e1d;
+      background: #fdebd8;
+      border-color: #f5d0a9;
+    }
+    .statusBadge.is-cancel {
+      color: #7d2f2f;
+      background: #fbe6e5;
+      border-color: #efc1bf;
+    }
+    .statusBadge.is-default {
+      color: #38514d;
+      background: #eef4f2;
+      border-color: #d3e1dc;
+    }
+    .dangerBtn {
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.15s ease;
+    }
+    .dangerBtn:hover { background: var(--danger-2); }
+    .ghostBtn {
+      background: #f7faf9;
+      color: #24413d;
+      border: 1px solid #c8d9d3;
+      border-radius: 10px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .ghostBtn:hover {
+      background: #eef6f3;
+      border-color: #a9c6bc;
+    }
+    .filterActions {
+      display: flex;
+      justify-content: flex-end;
+      margin: -4px 0 10px;
+    }
+    .filterActions .ghostBtn {
+      min-width: 150px;
+    }
+    .actionsCell { display: flex; gap: 6px; flex-wrap: wrap; }
+    .summary {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background:
+        linear-gradient(180deg, rgba(14, 138, 122, 0.05) 0%, rgba(255, 255, 255, 0.95) 22%),
+        #fff;
+      box-shadow: 0 4px 14px rgba(16, 40, 36, 0.05);
+    }
+    .summary .card b {
+      display: block;
+      margin-bottom: 4px;
+      color: #2a4440;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+    .summary .card .mono {
+      font-size: 22px;
+      font-weight: 800;
+      color: #163532;
+    }
+    .chartGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 14px;
+    }
+    .chartCard {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      background:
+        linear-gradient(180deg, rgba(14, 138, 122, 0.08) 0%, rgba(255, 255, 255, 0.97) 22%),
+        #fff;
+    }
+    .chartCard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(16, 40, 36, 0.12);
+    }
+    .chartCard b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #29423f;
+    }
+    .chartArea {
+      position: relative;
+      width: 100%;
+      height: clamp(280px, 34vw, 420px);
+      min-height: 280px;
+      border: 1px solid #e6efeb;
+      border-radius: 10px;
+      background: #fff;
+      padding: 0;
+      overflow: hidden;
+    }
+    .chartArea canvas {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 0 !important;
+    }
+    .emptyState {
+      border: 1px dashed #cfe0db;
+      background: var(--brand-soft-2);
+      color: #35534e;
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .mono { font-family: "Cascadia Mono", "Consolas", monospace; }
+    .history {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .history a {
+      display: inline-block;
+      text-decoration: none;
+      color: #13564f;
+      background: #eef8f5;
+      border: 1px solid #cae4dd;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 700;
+      font-size: 12px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .history a:hover {
+      transform: translateY(-1px);
+      background: #e4f4ef;
+    }
+    #deleteHint {
+      margin-top: 2px;
+      margin-bottom: 8px;
+      color: #5f6f6c;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    #historyInfo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-soft);
+      color: #6f4a29;
+      border: 1px solid #f0d0b2;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .authGate {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 29, 26, 0.40);
+      backdrop-filter: blur(2px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 16px;
+    }
+    .authCard {
+      width: 100%;
+      max-width: 440px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .authCard h2 { margin-top: 0; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .authCard label { display: block; font-size: 12px; color: #38514d; margin-top: 8px; font-weight: 700; }
+    .authCard input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin-top: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font: inherit;
+    }
+    .authCard button {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .authError { color: #b00020; min-height: 18px; margin-top: 8px; font-size: 12px; }
+    .authInfo { color: var(--muted); margin-bottom: 8px; font-size: 12px; }
+    #authUserLabel {
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #24413d;
+    }
+    #authLogoutBtn {
+      padding: 7px 11px;
+      cursor: pointer;
+      border: 1px solid #c8d9d3;
+      border-radius: 10px;
+      background: #f7faf9;
+      font-weight: 700;
+    }
+    .modalWrap {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 30, 27, 0.44);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      padding: 10px;
+    }
+    .modalBox {
+      background: #fff;
+      width: min(980px, 96vw);
+      max-height: 90vh;
+      overflow: auto;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+    .modalHead {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .modalMeta { color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+    @media (max-width: 840px) {
+      body { padding: 10px; }
+      #reportApp { padding: 12px; border-radius: 14px; }
+      .topRow { padding: 12px; }
+      .companyLogoWrap {
+        width: 52px;
+        height: 52px;
+      }
+      .topRowRight { width: 100%; text-align: left; }
+      .tabs {
+        position: static;
+        backdrop-filter: none;
+      }
+      .tabs button { padding: 9px 11px; font-size: 12px; }
+      .filters { grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); }
+      .filterActions {
+        justify-content: stretch;
+      }
+      .filterActions .ghostBtn {
+        width: 100%;
+      }
+      table { min-width: 640px; }
+      .chartGrid { grid-template-columns: 1fr; }
+      .chartArea {
+        height: 300px;
+        min-height: 240px;
+      }
+      .kpiGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .kpiGrid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <h1>Relatorio PDV</h1>
-  <div class="meta" id="generatedAt">Gerado em: -</div>
-  <div class="meta" id="reportDay"></div>
-
-  <div class="tabs">
-    <button data-tab="sales">Vendas</button>
-    <button data-tab="payments">Resumo por Pagamento</button>
-    <button data-tab="cash">Fechamento de Caixa</button>
-    <button data-tab="charts">Graficos</button>
-    <button data-tab="history">Historico</button>
-  </div>
-
-  <div id="sales" class="panel">
-    <div class="filters">
-      <div>
-        <label>Data inicial (fechamento)</label>
-        <input type="date" id="saleDateFrom" />
-      </div>
-      <div>
-        <label>Data final (fechamento)</label>
-        <input type="date" id="saleDateTo" />
-      </div>
-      <div>
-        <label>Status</label>
-        <select id="saleStatus">
-          <option value="">Todos</option>
-          <option value="OPEN">OPEN</option>
-          <option value="IN_PREP">IN_PREP</option>
-          <option value="READY">READY</option>
-          <option value="CLOSED">CLOSED</option>
-          <option value="CANCELED">CANCELED</option>
-          <option value="ABERTA">ABERTA</option>
-          <option value="PENDENTE_PAGAMENTO">PENDENTE_PAGAMENTO</option>
-          <option value="FINALIZADA">FINALIZADA</option>
-          <option value="CANCELADA">CANCELADA</option>
-        </select>
-      </div>
-      <div>
-        <label>Cliente</label>
-        <input type="text" id="saleCustomer" placeholder="Nome" />
-      </div>
-      <div>
-        <label>Telefone</label>
-        <input type="text" id="salePhone" placeholder="Telefone" />
-      </div>
-      <div>
-        <label>Pagamento (metodo)</label>
-        <input type="text" id="salePayMethod" placeholder="CASH/PIX/CARD_DEBIT/CARD_CREDIT" />
-      </div>
-    </div>
-    <div class="meta" id="deleteHint"></div>
-    <table id="salesTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Status</th>
-          <th>Cliente</th>
-          <th>Telefone</th>
-          <th>Criado</th>
-          <th>Fechado</th>
-          <th>Total</th>
-          <th>Desconto</th>
-          <th>Total Liquido</th>
-          <th>Total Pago</th>
-          <th>Acoes</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <div id="payments" class="panel">
-    <div class="filters">
-      <div>
-        <label>Data inicial (fechamento)</label>
-        <input type="date" id="payDateFrom" />
-      </div>
-      <div>
-        <label>Data final (fechamento)</label>
-        <input type="date" id="payDateTo" />
-      </div>
-    </div>
-    <div class="summary" id="paymentsSummary"></div>
-  </div>
-
-  <div id="cash" class="panel">
-    <table id="cashTable">
-      <thead>
-        <tr>
-          <th>Sessao</th>
-          <th>Aberto</th>
-          <th>Fechado</th>
-          <th>Fundo</th>
-          <th>Cash</th>
-          <th>Pix</th>
-          <th>Cartao</th>
-          <th>Reforcos</th>
-          <th>Sangrias</th>
-          <th>Esperado</th>
-          <th>Contado</th>
-          <th>Diferenca</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <div id="charts" class="panel">
-    <div class="summary">
-      <div class="card" style="width: 48%;">
-        <b>Vendas acumuladas por mês (ano)</b>
-        <canvas id="chartSalesByMonthCum" height="140"></canvas>
-      </div>
-      <div class="card" style="width: 48%;">
-        <b>Pagamentos por método</b>
-        <canvas id="chartPayByMethod" height="140"></canvas>
-      </div>
-      <div class="card" style="width: 48%;">
-        <b>Vendas por mês</b>
-        <canvas id="chartSalesByMonth" height="140"></canvas>
-      </div>
-      <div class="card" style="width: 48%;">
-        <b>Vendas por produto (Top 10)</b>
-        <canvas id="chartSalesByProduct" height="140"></canvas>
-      </div>
+  <div id="authGate" class="authGate">
+    <div class="authCard">
+      <h2>Acesso ao relatorio</h2>
+      <div id="authInfo" class="authInfo">Entre com e-mail e senha.</div>
+      <label for="authEmail">E-mail</label>
+      <input id="authEmail" type="email" autocomplete="username" />
+      <label for="authPassword">Senha</label>
+      <input id="authPassword" type="password" autocomplete="current-password" />
+      <button id="authLoginBtn">Entrar</button>
+      <div id="authError" class="authError"></div>
     </div>
   </div>
 
-  <div id="history" class="panel">
-    <div class="history" id="historyLinks"></div>
+  <div id="reportApp" style="display:none;">
+    <div class="topRow">
+      <div class="brandHead">
+        <div class="companyLogoWrap" id="companyLogoWrap">
+          <img id="companyLogo" alt="Logo da empresa" />
+        </div>
+        <div>
+          <div class="appTag">Painel online</div>
+          <h1 id="companyTitle">Relatorio PDV</h1>
+          <div class="meta" id="generatedAt">Gerado em: -</div>
+          <div class="meta" id="reportDay"></div>
+        </div>
+      </div>
+      <div class="topRowRight">
+        <div class="meta" id="authUserLabel"></div>
+        <button id="authLogoutBtn" style="display:none;">Sair</button>
+      </div>
+    </div>
+
+    <div class="kpiGrid" id="kpiGrid"></div>
+
+    <div class="tabs">
+      <button data-tab="sales">Vendas</button>
+      <button data-tab="payments">Resumo por Pagamento</button>
+      <button data-tab="cash">Fechamento de Caixa</button>
+      <button data-tab="charts">Graficos</button>
+      <button data-tab="history">Historico</button>
+    </div>
+
+    <div id="sales" class="panel">
+      <div class="panelHead">
+        <div>
+          <h2 class="panelTitle">Vendas</h2>
+          <div class="panelSub">Consulte, filtre e exclua vendas do periodo.</div>
+        </div>
+      </div>
+      <div class="filters">
+        <div>
+          <label>Data inicial (fechamento)</label>
+          <input type="date" id="saleDateFrom" />
+        </div>
+        <div>
+          <label>Data final (fechamento)</label>
+          <input type="date" id="saleDateTo" />
+        </div>
+        <div>
+          <label>Status</label>
+          <select id="saleStatus">
+            <option value="">Todos</option>
+            <option value="OPEN">OPEN</option>
+            <option value="IN_PREP">IN_PREP</option>
+            <option value="READY">READY</option>
+            <option value="CLOSED">CLOSED</option>
+            <option value="CANCELED">CANCELED</option>
+            <option value="ABERTA">ABERTA</option>
+            <option value="PENDENTE_PAGAMENTO">PENDENTE_PAGAMENTO</option>
+            <option value="FINALIZADA">FINALIZADA</option>
+            <option value="CANCELADA">CANCELADA</option>
+          </select>
+        </div>
+        <div>
+          <label>Cliente</label>
+          <input type="text" id="saleCustomer" placeholder="Nome" />
+        </div>
+        <div>
+          <label>Telefone</label>
+          <input type="text" id="salePhone" placeholder="Telefone" />
+        </div>
+        <div>
+          <label>Pagamento (metodo)</label>
+          <input type="text" id="salePayMethod" placeholder="CASH/PIX/CARD_DEBIT/CARD_CREDIT" />
+        </div>
+      </div>
+      <div class="filterActions">
+        <button id="salesApplyBtn" class="ghostBtn">Aplicar filtros</button>
+      </div>
+      <div class="meta" id="deleteHint"></div>
+      <div class="tableWrap">
+        <table id="salesTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Status</th>
+              <th>Cliente</th>
+              <th>Telefone</th>
+              <th>Criado</th>
+              <th>Fechado</th>
+              <th>Total</th>
+              <th>Desconto</th>
+              <th>Total Liquido</th>
+              <th>Total Pago</th>
+              <th>Itens</th>
+              <th>Acoes</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="itemsModal" class="modalWrap">
+      <div class="modalBox">
+        <div class="modalHead">
+          <h3 id="itemsModalTitle" style="margin:0;">Itens da venda</h3>
+          <button id="itemsModalClose" class="ghostBtn">Fechar</button>
+        </div>
+        <div id="itemsModalMeta" class="modalMeta"></div>
+        <div class="tableWrap">
+          <table id="itemsTable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qtd</th>
+                <th>Unitario</th>
+                <th>Total</th>
+                <th>Observacao</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="payments" class="panel">
+      <div class="panelHead">
+        <div>
+          <h2 class="panelTitle">Resumo por pagamento</h2>
+          <div class="panelSub">Totais recebidos por metodo no periodo filtrado.</div>
+        </div>
+      </div>
+      <div class="filters">
+        <div>
+          <label>Data inicial (fechamento)</label>
+          <input type="date" id="payDateFrom" />
+        </div>
+        <div>
+          <label>Data final (fechamento)</label>
+          <input type="date" id="payDateTo" />
+        </div>
+      </div>
+      <div class="filterActions">
+        <button id="paymentsApplyBtn" class="ghostBtn">Aplicar filtros</button>
+      </div>
+      <div class="summary" id="paymentsSummary"></div>
+    </div>
+
+    <div id="cash" class="panel">
+      <div class="panelHead">
+        <div>
+          <h2 class="panelTitle">Fechamento de caixa</h2>
+          <div class="panelSub">Conferencia das sessoes fechadas e diferencas.</div>
+        </div>
+      </div>
+      <div class="tableWrap">
+        <table id="cashTable">
+          <thead>
+            <tr>
+              <th>Sessao</th>
+              <th>Aberto</th>
+              <th>Fechado</th>
+              <th>Fundo</th>
+              <th>Cash</th>
+              <th>Pix</th>
+              <th>Cartao</th>
+              <th>Reforcos</th>
+              <th>Sangrias</th>
+              <th>Esperado</th>
+              <th>Contado</th>
+              <th>Diferenca</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="charts" class="panel">
+      <div class="panelHead">
+        <div>
+          <h2 class="panelTitle">Graficos</h2>
+          <div class="panelSub">Desempenho por mes, metodo e produto.</div>
+        </div>
+      </div>
+      <div class="filters">
+        <div>
+          <label>Data inicial (grafico)</label>
+          <input type="date" id="chartDateFrom" />
+        </div>
+        <div>
+          <label>Data final (grafico)</label>
+          <input type="date" id="chartDateTo" />
+        </div>
+      </div>
+      <div class="filterActions">
+        <button id="chartsApplyBtn" class="ghostBtn">Aplicar filtros</button>
+      </div>
+      <div class="meta" id="chartPeriodInfo"></div>
+      <div class="chartGrid">
+        <div class="card chartCard">
+          <b>Vendas acumuladas por mes (periodo)</b>
+          <div class="chartArea">
+            <canvas id="chartSalesByMonthCum"></canvas>
+          </div>
+        </div>
+        <div class="card chartCard">
+          <b>Pagamentos por metodo</b>
+          <div class="chartArea">
+            <canvas id="chartPayByMethod"></canvas>
+          </div>
+        </div>
+        <div class="card chartCard">
+          <b>Vendas por mes (periodo)</b>
+          <div class="chartArea">
+            <canvas id="chartSalesByMonth"></canvas>
+          </div>
+        </div>
+        <div class="card chartCard">
+          <b>Vendas por produto (Top 10)</b>
+          <div class="chartArea">
+            <canvas id="chartSalesByProduct"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="history" class="panel">
+      <div class="panelHead">
+        <div>
+          <h2 class="panelTitle">Historico</h2>
+          <div class="panelSub">Atalhos para relatorios diarios publicados.</div>
+        </div>
+      </div>
+      <div class="filters">
+        <div>
+          <label>Mes</label>
+          <input type="month" id="historyMonth" />
+        </div>
+        <div>
+          <label>Data inicial</label>
+          <input type="date" id="historyDateFrom" />
+        </div>
+        <div>
+          <label>Data final</label>
+          <input type="date" id="historyDateTo" />
+        </div>
+      </div>
+      <div class="filterActions">
+        <button id="historyApplyBtn" class="ghostBtn">Aplicar filtros</button>
+      </div>
+      <div class="meta" id="historyInfo"></div>
+      <div class="history" id="historyLinks"></div>
+    </div>
   </div>
 
 <script>
 let REPORT = null;
+let CHARTS = [];
+let FIREBASE_READY = false;
+let DELETED_ORDER_IDS = new Set();
+let CHART_RENDER_TIMER = null;
+const CLOUD_DELETE_COLLECTION = "report_deleted_orders";
+
 const brl = (c) => "R$ " + (c/100).toFixed(2).replace(".", ",");
+
+function toInt(value) {
+  const n = Number(value || 0);
+  if (!Number.isFinite(n)) return 0;
+  return Math.trunc(n);
+}
+
+function cloneJson(data) {
+  try {
+    return JSON.parse(JSON.stringify(data || {}));
+  } catch (_e) {
+    return {};
+  }
+}
+
+function applyDeletedOrdersFilter(rawData) {
+  const data = cloneJson(rawData);
+  if (!DELETED_ORDER_IDS.size) return data;
+
+  const sales = (Array.isArray(data.sales) ? data.sales : []).filter((s) => {
+    const oid = String(s && s.id ? s.id : "").trim();
+    return oid && !DELETED_ORDER_IDS.has(oid);
+  });
+  data.sales = sales;
+
+  const totals = {};
+  const byDay = {};
+  const byMonth = {};
+  const byProduct = {};
+
+  sales.forEach((s) => {
+    (s.payments || []).forEach((p) => {
+      const method = String((p && p.method) || "").toUpperCase().trim();
+      if (!method) return;
+      const net = toInt((p && p.net_cents) || 0);
+      totals[method] = toInt(totals[method]) + net;
+    });
+
+    const day = String((s.closed_at || s.created_at || "")).slice(0, 10);
+    if (!day) return;
+    const liquid = toInt(s.total_liquido_cents);
+    byDay[day] = toInt(byDay[day]) + liquid;
+    const month = day.slice(0, 7);
+    if (month) byMonth[month] = toInt(byMonth[month]) + liquid;
+
+    (s.items || []).forEach((it) => {
+      const name = String((it && it.name) || "").trim() || "Item";
+      const qty = toInt((it && it.qty) || 0);
+      const total = toInt((it && it.total_cents) || 0);
+      if (!byProduct[name]) {
+        byProduct[name] = { qty: 0, total_cents: 0 };
+      }
+      byProduct[name].qty = toInt(byProduct[name].qty) + qty;
+      byProduct[name].total_cents = toInt(byProduct[name].total_cents) + total;
+    });
+  });
+
+  data.payments_summary = totals;
+  data.sales_by_day = byDay;
+  data.sales_by_month = byMonth;
+  data.sales_by_product = byProduct;
+  return data;
+}
 
 function setTab(id) {
   document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const target = document.getElementById(id);
+  if (target) target.classList.add("active");
+  document.querySelectorAll(".tabs button").forEach((btn) => {
+    const active = (btn.dataset.tab || "") === id;
+    btn.classList.toggle("active", active);
+  });
+  if (id === "charts") {
+    scheduleChartsRender();
+  }
 }
 
-function loadReport() {
-  return fetch("./data.json")
-    .then(r => r.json())
-    .then(data => {
-      REPORT = data;
-      document.getElementById("generatedAt").innerText = "Gerado em: " + data.generated_at;
-      document.getElementById("reportDay").innerText = data.day ? ("Dia: " + data.day) : "";
-      const hint = document.getElementById("deleteHint");
-      if (hint) {
-        const apiBase = getDeleteApiBase();
-        hint.innerText = apiBase
-          ? ("Excluir venda na base: API " + apiBase)
-          : "Excluir venda na base: configure URL da API remota nas Configuracoes do sistema.";
-      }
-      renderPayments();
-      renderCash();
-      renderSales();
-      renderCharts();
-      renderHistory();
+function setAuthGateVisible(show) {
+  const el = document.getElementById("authGate");
+  if (el) el.style.display = show ? "flex" : "none";
+}
+
+function setReportVisible(show) {
+  const el = document.getElementById("reportApp");
+  if (el) el.style.display = show ? "block" : "none";
+}
+
+function setAuthInfo(msg) {
+  const el = document.getElementById("authInfo");
+  if (el) el.innerText = msg || "";
+}
+
+function setAuthError(msg) {
+  const el = document.getElementById("authError");
+  if (el) el.innerText = msg || "";
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function appendEmptyRow(tbody, colspan, message) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = "<td class='emptyRow' colspan='" + String(colspan) + "'>" + escapeHtml(message) + "</td>";
+  tbody.appendChild(tr);
+}
+
+function statusClass(status) {
+  const st = String(status || "").toUpperCase();
+  if (["CLOSED", "FINALIZADA", "READY"].includes(st)) return "is-finish";
+  if (["OPEN", "IN_PREP", "ABERTA", "PENDENTE_PAGAMENTO"].includes(st)) return "is-progress";
+  if (["CANCELED", "CANCELADA"].includes(st)) return "is-cancel";
+  return "is-default";
+}
+
+function monthBounds(monthRef) {
+  const m = String(monthRef || "").trim();
+  if (!/^\d{4}-\d{2}$/.test(m)) {
+    return { from: "", to: "" };
+  }
+  const parts = m.split("-");
+  const y = toInt(parts[0]);
+  const mm = toInt(parts[1]);
+  if (y <= 0 || mm < 1 || mm > 12) {
+    return { from: "", to: "" };
+  }
+  const lastDay = new Date(y, mm, 0).getDate();
+  const from = m + "-01";
+  const to = m + "-" + String(lastDay).padStart(2, "0");
+  return { from, to };
+}
+
+function updateHistoryDateLimits() {
+  const monthEl = document.getElementById("historyMonth");
+  const fromEl = document.getElementById("historyDateFrom");
+  const toEl = document.getElementById("historyDateTo");
+  if (!monthEl || !fromEl || !toEl) return;
+
+  const bounds = monthBounds(monthEl.value);
+  if (!bounds.from || !bounds.to) {
+    fromEl.min = "";
+    fromEl.max = "";
+    toEl.min = "";
+    toEl.max = "";
+    return;
+  }
+
+  fromEl.min = bounds.from;
+  fromEl.max = bounds.to;
+  toEl.min = bounds.from;
+  toEl.max = bounds.to;
+
+  if (fromEl.value && (fromEl.value < bounds.from || fromEl.value > bounds.to)) {
+    fromEl.value = bounds.from;
+  }
+  if (toEl.value && (toEl.value < bounds.from || toEl.value > bounds.to)) {
+    toEl.value = bounds.to;
+  }
+}
+
+function renderKpis() {
+  const box = document.getElementById("kpiGrid");
+  if (!box || !REPORT) return;
+  const sales = Array.isArray(REPORT.sales) ? REPORT.sales : [];
+  let totalNet = 0;
+  let totalPaid = 0;
+  let totalDiscount = 0;
+  let finishedCount = 0;
+
+  sales.forEach((s) => {
+    const st = String((s && s.status) || "").toUpperCase();
+    if (["CLOSED", "FINALIZADA", "READY"].includes(st)) {
+      finishedCount += 1;
+    }
+    totalNet += toInt((s && s.total_liquido_cents) || 0);
+    totalPaid += toInt((s && s.total_paid_cents) || 0);
+    totalDiscount += toInt((s && s.discount_cents) || 0);
+  });
+
+  const orderCount = sales.length;
+  const ticketMedio = orderCount > 0 ? Math.round(totalNet / orderCount) : 0;
+  const aberto = Math.max(0, orderCount - finishedCount);
+  const dayRef = String(REPORT.day || "").trim();
+  const hintDay = dayRef ? ("Base de " + dayRef) : "Periodo completo";
+
+  box.innerHTML = `
+    <div class="kpiCard">
+      <div class="kpiLabel">Faturamento liquido</div>
+      <div class="kpiValue">${brl(totalNet)}</div>
+      <div class="kpiHint">${hintDay}</div>
+    </div>
+    <div class="kpiCard alt">
+      <div class="kpiLabel">Pedidos</div>
+      <div class="kpiValue">${orderCount}</div>
+      <div class="kpiHint">${finishedCount} finalizados | ${aberto} em aberto</div>
+    </div>
+    <div class="kpiCard">
+      <div class="kpiLabel">Ticket medio</div>
+      <div class="kpiValue">${brl(ticketMedio)}</div>
+      <div class="kpiHint">Media por pedido</div>
+    </div>
+    <div class="kpiCard alt">
+      <div class="kpiLabel">Recebido e desconto</div>
+      <div class="kpiValue">${brl(totalPaid)}</div>
+      <div class="kpiHint">Descontos: ${brl(totalDiscount)}</div>
+    </div>
+  `;
+}
+
+function closeItemsModal() {
+  const modal = document.getElementById("itemsModal");
+  if (modal) modal.style.display = "none";
+}
+
+function showSaleItems(orderId) {
+  if (!REPORT) return;
+  const sale = (REPORT.sales || []).find((s) => toInt(s.id) === toInt(orderId));
+  if (!sale) {
+    alert("Venda nao encontrada.");
+    return;
+  }
+  const modal = document.getElementById("itemsModal");
+  const title = document.getElementById("itemsModalTitle");
+  const meta = document.getElementById("itemsModalMeta");
+  const tb = document.querySelector("#itemsTable tbody");
+  if (!modal || !title || !meta || !tb) return;
+
+  title.innerText = "Itens da venda #" + String(sale.id || "");
+  meta.innerText =
+    "Cliente: " + (sale.customer_name || "-") +
+    " | Total liquido: " + brl(toInt(sale.total_liquido_cents || 0));
+
+  tb.innerHTML = "";
+  const items = Array.isArray(sale.items) ? sale.items : [];
+  if (!items.length) {
+    appendEmptyRow(tb, 5, "Sem itens nesta venda.");
+  } else {
+    items.forEach((it) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${escapeHtml(it.name || "")}</td>
+        <td>${toInt(it.qty || 0)}</td>
+        <td>${brl(toInt(it.unit_price_cents || 0))}</td>
+        <td>${brl(toInt(it.total_cents || 0))}</td>
+        <td>${escapeHtml(it.notes || "")}</td>
+      `;
+      tb.appendChild(tr);
     });
+  }
+  modal.style.display = "flex";
+}
+
+function clearCharts() {
+  CHARTS.forEach(ch => {
+    try { ch.destroy(); } catch (_e) {}
+  });
+  CHARTS = [];
+}
+
+function scheduleChartsRender() {
+  if (CHART_RENDER_TIMER) {
+    clearTimeout(CHART_RENDER_TIMER);
+  }
+  CHART_RENDER_TIMER = setTimeout(() => {
+    CHART_RENDER_TIMER = null;
+    const panel = document.getElementById("charts");
+    if (!panel || !panel.classList.contains("active")) return;
+    renderCharts();
+  }, 70);
+}
+
+function applyReportData(data) {
+  const filtered = applyDeletedOrdersFilter(data);
+  REPORT = filtered;
+  document.getElementById("generatedAt").innerText = "Gerado em: " + (filtered.generated_at || "-");
+  document.getElementById("reportDay").innerText = filtered.day ? ("Dia: " + filtered.day) : "";
+  const hint = document.getElementById("deleteHint");
+  if (hint) {
+    const apiBase = getDeleteApiBase();
+    hint.innerText = apiBase
+      ? ("Excluir venda na base: API " + apiBase)
+      : "Excluir venda na base: configure URL da API remota nas Configuracoes do sistema.";
+  }
+  renderKpis();
+  renderPayments();
+  renderCash();
+  renderSales();
+  const chartsPanel = document.getElementById("charts");
+  if (chartsPanel && chartsPanel.classList.contains("active")) {
+    renderCharts();
+  } else {
+    clearCharts();
+  }
+  renderHistory();
+}
+
+async function loadReport() {
+  const resp = await fetch("./data.json", { cache: "no-store" });
+  if (!resp.ok) {
+    throw new Error("Falha ao carregar data.json (HTTP " + resp.status + ")");
+  }
+  const data = await resp.json();
+  if (FIREBASE_READY) {
+    await loadDeletedOrderIdsCloud(data.report_instance_id || "");
+  }
+  applyReportData(data);
 }
 
 function getDeleteApiBase() {
   if (!REPORT) return "";
   const raw = (REPORT.delete_api_url || "").trim();
   return raw.replace(/\/+$/, "");
+}
+
+async function loadDeletedOrderIdsCloud(reportInstanceId) {
+  DELETED_ORDER_IDS = new Set();
+  if (!FIREBASE_READY || !window.firebase || !firebase.firestore) {
+    return;
+  }
+  const rid = String(reportInstanceId || "").trim();
+  if (!rid) return;
+  try {
+    const snap = await firebase
+      .firestore()
+      .collection(CLOUD_DELETE_COLLECTION)
+      .where("report_instance_id", "==", rid)
+      .get();
+    snap.forEach((doc) => {
+      const item = doc.data() || {};
+      const oid = String(item.order_id || "").trim();
+      if (oid) {
+        DELETED_ORDER_IDS.add(oid);
+      }
+    });
+  } catch (_e) {
+    // Falha no cloud nao pode bloquear visualizacao do relatorio.
+  }
+}
+
+async function markOrderDeletedInCloud(orderId) {
+  if (!FIREBASE_READY || !window.firebase || !firebase.firestore) {
+    throw new Error("Exclusao cloud indisponivel.");
+  }
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    throw new Error("Sessao expirada. Faca login novamente.");
+  }
+  const rid = String((REPORT && REPORT.report_instance_id) || "").trim() || "default";
+  const oid = toInt(orderId);
+  if (oid <= 0) {
+    throw new Error("Pedido invalido.");
+  }
+  const docId = rid + "__" + String(oid);
+  await firebase
+    .firestore()
+    .collection(CLOUD_DELETE_COLLECTION)
+    .doc(docId)
+    .set(
+      {
+        order_id: oid,
+        report_instance_id: rid,
+        deleted_at: new Date().toISOString(),
+        deleted_by: (user.email || user.uid || "usuario"),
+      },
+      { merge: true }
+    );
+  DELETED_ORDER_IDS.add(String(oid));
+}
+
+async function loadReportFromApi(apiBase, token) {
+  const resp = await fetch(apiBase + "/api/report_data", {
+    method: "GET",
+    headers: {
+      "X-Delete-Token": token
+    },
+    cache: "no-store"
+  });
+  let data = {};
+  try { data = await resp.json(); } catch (_e) {}
+  if (!resp.ok || !data.ok) {
+    const msg = (data && data.error) ? data.error : ("HTTP " + resp.status);
+    if ((msg || "").toLowerCase().includes("token invalido")) {
+      setDeleteToken("");
+    }
+    throw new Error(msg);
+  }
+  if (FIREBASE_READY) {
+    await loadDeletedOrderIdsCloud((data.report || {}).report_instance_id || "");
+  }
+  applyReportData(data.report || {});
 }
 
 function getTokenStorageKey() {
@@ -221,49 +1386,62 @@ async function deleteSaleInBase(orderId) {
     alert("Relatorio ainda nao carregado.");
     return;
   }
-  if (!confirm("Excluir venda #" + orderId + " da base local?")) {
+  if (!confirm("Excluir venda #" + orderId + "?")) {
     return;
   }
   const apiBase = getDeleteApiBase();
-  if (!apiBase) {
-    alert("API de exclusao nao configurada. Ajuste em Configuracoes do sistema.");
-    return;
-  }
-  if (location.protocol === "https:" && apiBase.toLowerCase().startsWith("http://")) {
-    alert("URL da API precisa ser HTTPS quando o relatorio roda no GitHub Pages.");
-    return;
-  }
-  let token = getDeleteToken();
-  if (!token) {
-    token = (prompt("Informe o token da API para excluir vendas:") || "").trim();
+  const canTryLocalApi = !!apiBase && !(
+    location.protocol === "https:" && apiBase.toLowerCase().startsWith("http://")
+  );
+
+  if (canTryLocalApi) {
+    let token = getDeleteToken();
     if (!token) {
-      alert("Token obrigatorio.");
+      token = (prompt("Informe o token da API para excluir vendas:") || "").trim();
+      if (!token) {
+        alert("Token obrigatorio.");
+        return;
+      }
+      setDeleteToken(token);
+    }
+    try {
+      const resp = await fetch(apiBase + "/api/delete_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Delete-Token": token
+        },
+        body: JSON.stringify({ order_id: orderId })
+      });
+      let data = {};
+      try { data = await resp.json(); } catch (_e) {}
+      if (!resp.ok || !data.ok) {
+        throw new Error((data && data.error) ? data.error : ("HTTP " + resp.status));
+      }
+      alert("Venda excluida na base local com sucesso.");
+      try {
+        await loadReportFromApi(apiBase, token);
+      } catch (_e) {
+        await loadReport();
+      }
       return;
     }
-    setDeleteToken(token);
-  }
-  try {
-    const resp = await fetch(apiBase + "/api/delete_order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Delete-Token": token
-      },
-      body: JSON.stringify({ order_id: orderId })
-    });
-    let data = {};
-    try { data = await resp.json(); } catch (_e) {}
-    if (!resp.ok || !data.ok) {
-      throw new Error((data && data.error) ? data.error : ("HTTP " + resp.status));
+    catch (_e) {
+      // Cai para modo cloud abaixo quando API local nao estiver acessivel.
     }
-    alert("Venda excluida da base com sucesso.");
+  }
+
+  try {
+    await markOrderDeletedInCloud(orderId);
+    alert("Venda removida do relatorio (modo cloud).");
     await loadReport();
   } catch (e) {
-    alert("Falha ao excluir na base: " + e + "\nVerifique API HTTPS/token e sistema desktop online.");
+    alert("Falha ao excluir: " + e + "\nSe o app desktop estiver fechado, mantenha login Firebase ativo para usar modo cloud.");
   }
 }
 
 function renderPayments() {
+  if (!REPORT) return;
   const box = document.getElementById("paymentsSummary");
   box.innerHTML = "";
   const from = document.getElementById("payDateFrom").value;
@@ -279,18 +1457,35 @@ function renderPayments() {
       totals[m] = (totals[m] || 0) + net;
     });
   });
-  Object.keys(totals).sort().forEach(k => {
+  const methods = Object.keys(totals).sort();
+  if (!methods.length) {
+    box.innerHTML = "<div class='emptyState'>Sem pagamentos no periodo selecionado.</div>";
+    return;
+  }
+  let totalGeral = 0;
+  methods.forEach(k => {
+    totalGeral += totals[k] || 0;
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = "<b>" + k + "</b><div class='mono'>" + brl(totals[k]) + "</div>";
     box.appendChild(div);
   });
+  const total = document.createElement("div");
+  total.className = "card";
+  total.innerHTML = "<b>Total do periodo</b><div class='mono'>" + brl(totalGeral) + "</div>";
+  box.prepend(total);
 }
 
 function renderCash() {
+  if (!REPORT) return;
   const tb = document.querySelector("#cashTable tbody");
   tb.innerHTML = "";
-  (REPORT.cash_sessions_closed || []).forEach(c => {
+  const sessions = REPORT.cash_sessions_closed || [];
+  if (!sessions.length) {
+    appendEmptyRow(tb, 12, "Sem fechamentos de caixa para exibir.");
+    return;
+  }
+  sessions.forEach(c => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${c.session_id}</td>
@@ -311,6 +1506,7 @@ function renderCash() {
 }
 
 function renderSales() {
+  if (!REPORT) return;
   const tb = document.querySelector("#salesTable tbody");
   tb.innerHTML = "";
   const from = document.getElementById("saleDateFrom").value;
@@ -319,11 +1515,12 @@ function renderSales() {
   const customer = document.getElementById("saleCustomer").value.trim().toLowerCase();
   const phone = document.getElementById("salePhone").value.trim().toLowerCase();
   const payMethod = document.getElementById("salePayMethod").value.trim().toUpperCase();
+  let found = 0;
 
   (REPORT.sales || []).forEach(s => {
-    const closedDate = (s.closed_at || "").slice(0, 10);
-    if (from && closedDate && closedDate < from) return;
-    if (to && closedDate && closedDate > to) return;
+    const refDate = (s.closed_at || s.created_at || "").slice(0, 10);
+    if (from && refDate && refDate < from) return;
+    if (to && refDate && refDate > to) return;
     if (status && (s.status || "").toUpperCase() !== status) return;
     if (customer && !(s.customer_name || "").toLowerCase().includes(customer)) return;
     if (phone && !(s.customer_phone || "").toLowerCase().includes(phone)) return;
@@ -331,75 +1528,131 @@ function renderSales() {
       const methods = (s.payments || []).map(p => (p.method || "").toUpperCase());
       if (!methods.includes(payMethod)) return;
     }
+    found += 1;
+    const orderId = toInt(s.id || 0);
+    const st = String(s.status || "").toUpperCase();
+    const statusCss = statusClass(st);
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${s.id}</td>
-      <td>${s.status || ""}</td>
-      <td>${s.customer_name || ""}</td>
-      <td>${s.customer_phone || ""}</td>
-      <td>${s.created_at || ""}</td>
-      <td>${s.closed_at || ""}</td>
+      <td class="mono">${orderId > 0 ? orderId : ""}</td>
+      <td><span class="statusBadge ${statusCss}">${escapeHtml(st || "-")}</span></td>
+      <td>${escapeHtml(s.customer_name || "")}</td>
+      <td>${escapeHtml(s.customer_phone || "")}</td>
+      <td class="mono">${escapeHtml(s.created_at || "")}</td>
+      <td class="mono">${escapeHtml(s.closed_at || "")}</td>
       <td>${brl(s.total_cents)}</td>
       <td>${brl(s.discount_cents)}</td>
       <td>${brl(s.total_liquido_cents)}</td>
       <td>${brl(s.total_paid_cents)}</td>
-      <td><button class="dangerBtn" onclick="deleteSaleInBase(${s.id})">Excluir</button></td>
+      <td>${toInt(s.items_count || 0)}</td>
+      <td class="actionsCell">
+        <button class="ghostBtn" onclick="showSaleItems(${orderId})">Ver itens</button>
+        <button class="dangerBtn" onclick="deleteSaleInBase(${orderId})">Excluir</button>
+      </td>
     `;
     tb.appendChild(tr);
   });
+  if (!found) {
+    appendEmptyRow(tb, 12, "Sem vendas para os filtros informados.");
+  }
 }
 
 function renderCharts() {
-  const salesByMonth = REPORT.sales_by_month || {};
+  if (!REPORT) return;
+  clearCharts();
+
+  const from = document.getElementById("chartDateFrom").value;
+  const to = document.getElementById("chartDateTo").value;
+  const periodInfo = document.getElementById("chartPeriodInfo");
+  if (periodInfo) {
+    const fromTxt = from || "(inicio)";
+    const toTxt = to || "(fim)";
+    periodInfo.innerText = "Periodo dos graficos: " + fromTxt + " ate " + toTxt;
+  }
+
+  const filteredSales = (REPORT.sales || []).filter((s) => {
+    const refDate = String((s.closed_at || s.created_at || "")).slice(0, 10);
+    if (from && refDate && refDate < from) return false;
+    if (to && refDate && refDate > to) return false;
+    return true;
+  });
+
+  const salesByMonth = {};
+  const pay = {};
+  const salesByProduct = {};
+
+  filteredSales.forEach((s) => {
+    const refDate = String((s.closed_at || s.created_at || "")).slice(0, 10);
+    const month = refDate.slice(0, 7);
+    if (month) {
+      salesByMonth[month] = toInt(salesByMonth[month]) + toInt(s.total_liquido_cents || 0);
+    }
+
+    (s.payments || []).forEach((p) => {
+      const method = String((p && p.method) || "").toUpperCase().trim();
+      if (!method) return;
+      pay[method] = toInt(pay[method]) + toInt((p && p.net_cents) || 0);
+    });
+
+    (s.items || []).forEach((it) => {
+      const name = String((it && it.name) || "").trim() || "Item";
+      const qty = toInt((it && it.qty) || 0);
+      const total = toInt((it && it.total_cents) || 0);
+      if (!salesByProduct[name]) {
+        salesByProduct[name] = { qty: 0, total_cents: 0 };
+      }
+      salesByProduct[name].qty = toInt(salesByProduct[name].qty) + qty;
+      salesByProduct[name].total_cents = toInt(salesByProduct[name].total_cents) + total;
+    });
+  });
+
   const mLabels = Object.keys(salesByMonth).sort();
   let acc = 0;
   const mValuesAcc = mLabels.map(m => {
     acc += (salesByMonth[m] || 0);
     return acc / 100.0;
   });
+
   const ctx1 = document.getElementById("chartSalesByMonthCum");
   if (ctx1) {
-    new Chart(ctx1, {
+    CHARTS.push(new Chart(ctx1, {
       type: "line",
       data: {
         labels: mLabels,
         datasets: [{ label: "Acumulado (R$)", data: mValuesAcc, borderColor: "#2b7", fill: false }]
       },
-      options: { responsive: true, plugins: { legend: { display: true } } }
-    });
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
+    }));
   }
 
-  const pay = REPORT.payments_summary || {};
   const pLabels = Object.keys(pay).sort();
   const pValues = pLabels.map(k => (pay[k] || 0) / 100.0);
   const ctx2 = document.getElementById("chartPayByMethod");
   if (ctx2) {
-    new Chart(ctx2, {
+    CHARTS.push(new Chart(ctx2, {
       type: "bar",
       data: {
         labels: pLabels,
         datasets: [{ label: "Recebido (R$)", data: pValues, backgroundColor: "#49f" }]
       },
-      options: { responsive: true, plugins: { legend: { display: true } } }
-    });
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
+    }));
   }
 
-  const mLabels2 = mLabels;
-  const mValues2 = mLabels2.map(m => (salesByMonth[m] || 0) / 100.0);
+  const mValues2 = mLabels.map(m => (salesByMonth[m] || 0) / 100.0);
   const ctx3 = document.getElementById("chartSalesByMonth");
   if (ctx3) {
-    new Chart(ctx3, {
+    CHARTS.push(new Chart(ctx3, {
       type: "bar",
       data: {
-        labels: mLabels2,
+        labels: mLabels,
         datasets: [{ label: "Vendas (R$)", data: mValues2, backgroundColor: "#9c6" }]
       },
-      options: { responsive: true, plugins: { legend: { display: true } } }
-    });
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
+    }));
   }
 
-  const salesByProduct = REPORT.sales_by_product || {};
   const prodPairs = Object.keys(salesByProduct).map(k => [k, salesByProduct[k] || {total_cents:0}]);
   prodPairs.sort((a,b) => (b[1].total_cents || 0) - (a[1].total_cents || 0));
   const top = prodPairs.slice(0, 10);
@@ -407,24 +1660,59 @@ function renderCharts() {
   const prodValues = top.map(t => (t[1].total_cents || 0) / 100.0);
   const ctx4 = document.getElementById("chartSalesByProduct");
   if (ctx4) {
-    new Chart(ctx4, {
+    CHARTS.push(new Chart(ctx4, {
       type: "bar",
       data: {
         labels: prodLabels,
         datasets: [{ label: "Total (R$)", data: prodValues, backgroundColor: "#c69" }]
       },
-      options: { responsive: true, plugins: { legend: { display: true } } }
-    });
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
+    }));
   }
 }
 
 function renderHistory() {
+  if (!REPORT) return;
   const box = document.getElementById("historyLinks");
+  const info = document.getElementById("historyInfo");
   if (!box) return;
+  updateHistoryDateLimits();
   box.innerHTML = "";
-  const days = Object.keys(REPORT.sales_by_day || {}).sort().reverse();
+  const monthRef = (document.getElementById("historyMonth") || {}).value || "";
+  let from = (document.getElementById("historyDateFrom") || {}).value || "";
+  let to = (document.getElementById("historyDateTo") || {}).value || "";
+
+  const bounds = monthBounds(monthRef);
+  if (bounds.from && bounds.to) {
+    if (from && from < bounds.from) from = bounds.from;
+    if (from && from > bounds.to) from = bounds.to;
+    if (to && to < bounds.from) to = bounds.from;
+    if (to && to > bounds.to) to = bounds.to;
+  }
+
+  if (from && to && from > to) {
+    const tmp = from;
+    from = to;
+    to = tmp;
+  }
+
+  const allDays = Object.keys(REPORT.sales_by_day || {}).sort().reverse();
+  const days = allDays.filter((d) => {
+    if (monthRef && !d.startsWith(monthRef + "-")) return false;
+    if (from && d < from) return false;
+    if (to && d > to) return false;
+    return true;
+  });
+
+  if (info) {
+    const monthTxt = monthRef || "todos";
+    const fromTxt = from || "(inicio)";
+    const toTxt = to || "(fim)";
+    info.innerText = "Mes: " + monthTxt + " | Intervalo: " + fromTxt + " ate " + toTxt + " | Dias: " + String(days.length);
+  }
+
   if (!days.length) {
-    box.innerText = "Sem historico.";
+    box.innerHTML = "<div class='emptyState'>Sem historico disponivel.</div>";
     return;
   }
   days.forEach(d => {
@@ -436,18 +1724,197 @@ function renderHistory() {
   });
 }
 
+function authPayload() {
+  const payload = window.REPORT_FIREBASE_AUTH || {};
+  return {
+    enabled: !!payload.enabled,
+    config: payload.config || {}
+  };
+}
+
+function normalizedFirebaseConfig(rawCfg) {
+  const cfg = rawCfg || {};
+  return {
+    apiKey: String(cfg.apiKey || "").trim(),
+    authDomain: String(cfg.authDomain || "").trim(),
+    projectId: String(cfg.projectId || "").trim(),
+    storageBucket: String(cfg.storageBucket || "").trim(),
+    messagingSenderId: String(cfg.messagingSenderId || "").trim(),
+    appId: String(cfg.appId || "").trim(),
+    measurementId: String(cfg.measurementId || "").trim()
+  };
+}
+
+function hasAuthConfig(cfg) {
+  return !!(cfg.apiKey && cfg.authDomain && cfg.projectId && cfg.appId);
+}
+
+async function doEmailLogin() {
+  setAuthError("");
+  const email = (document.getElementById("authEmail").value || "").trim();
+  const password = (document.getElementById("authPassword").value || "").trim();
+  if (!email || !password) {
+    setAuthError("Informe e-mail e senha.");
+    return;
+  }
+  try {
+    await firebase.auth().signInWithEmailAndPassword(email, password);
+  } catch (e) {
+    setAuthError((e && e.message) ? e.message : "Falha no login.");
+  }
+}
+
+async function doLogout() {
+  try {
+    await firebase.auth().signOut();
+  } catch (_e) {}
+}
+
+function bindAuthEvents() {
+  const btnLogin = document.getElementById("authLoginBtn");
+  if (btnLogin) btnLogin.addEventListener("click", doEmailLogin);
+
+  const btnLogout = document.getElementById("authLogoutBtn");
+  if (btnLogout) btnLogout.addEventListener("click", doLogout);
+
+  const pass = document.getElementById("authPassword");
+  if (pass) {
+    pass.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter") doEmailLogin();
+    });
+  }
+}
+
+function startReport() {
+  bindAuthEvents();
+
+  const payload = authPayload();
+  const authUserLabel = document.getElementById("authUserLabel");
+  const logoutBtn = document.getElementById("authLogoutBtn");
+
+  if (!payload.enabled) {
+    FIREBASE_READY = false;
+    setAuthGateVisible(false);
+    setReportVisible(true);
+    if (authUserLabel) authUserLabel.innerText = "Acesso sem login";
+    if (logoutBtn) logoutBtn.style.display = "none";
+    loadReport().catch((e) => alert("Falha ao carregar relatorio: " + e));
+    return;
+  }
+
+  const cfg = normalizedFirebaseConfig(payload.config);
+  if (!hasAuthConfig(cfg)) {
+    setReportVisible(false);
+    setAuthGateVisible(true);
+    setAuthInfo("Login habilitado, mas faltam chaves do Firebase no sistema desktop.");
+    setAuthError("Preencha API key, Auth domain, Project ID e App ID nas configuracoes.");
+    const btn = document.getElementById("authLoginBtn");
+    if (btn) btn.disabled = true;
+    return;
+  }
+
+  try {
+    if (!window.firebase) throw new Error("SDK do Firebase nao carregou.");
+    if (!firebase.apps || !firebase.apps.length) {
+      firebase.initializeApp(cfg);
+    }
+    FIREBASE_READY = !!(firebase.firestore);
+  } catch (e) {
+    FIREBASE_READY = false;
+    setReportVisible(false);
+    setAuthGateVisible(true);
+    setAuthInfo("Falha ao inicializar Firebase.");
+    setAuthError(String(e || "erro desconhecido"));
+    return;
+  }
+
+  setAuthInfo("Entre com e-mail e senha.");
+  setAuthError("");
+  setAuthGateVisible(true);
+  setReportVisible(false);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (!user) {
+      setReportVisible(false);
+      setAuthGateVisible(true);
+      if (authUserLabel) authUserLabel.innerText = "";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      return;
+    }
+    if (authUserLabel) authUserLabel.innerText = "Logado: " + (user.email || "usuario");
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+    setAuthGateVisible(false);
+    setReportVisible(true);
+    loadReport().catch((e) => alert("Falha ao carregar relatorio: " + e));
+  });
+}
+
 document.querySelectorAll(".tabs button").forEach(btn => {
   btn.addEventListener("click", () => setTab(btn.dataset.tab));
 });
 
-["saleDateFrom","saleDateTo","saleStatus","saleCustomer","salePhone","salePayMethod"]
-  .forEach(id => document.getElementById(id).addEventListener("input", renderSales));
+function bindFilterEvents(ids, applyFn) {
+  ids.forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("input", applyFn);
+    el.addEventListener("change", applyFn);
+    el.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter") {
+        ev.preventDefault();
+        applyFn();
+      }
+    });
+  });
+}
 
-["payDateFrom","payDateTo"]
-  .forEach(id => document.getElementById(id).addEventListener("input", renderPayments));
+bindFilterEvents(
+  ["saleDateFrom","saleDateTo","saleStatus","saleCustomer","salePhone","salePayMethod"],
+  renderSales
+);
+bindFilterEvents(["payDateFrom","payDateTo"], renderPayments);
+bindFilterEvents(["chartDateFrom","chartDateTo"], scheduleChartsRender);
+bindFilterEvents(["historyMonth","historyDateFrom","historyDateTo"], renderHistory);
+
+const salesApplyBtn = document.getElementById("salesApplyBtn");
+if (salesApplyBtn) salesApplyBtn.addEventListener("click", renderSales);
+
+const paymentsApplyBtn = document.getElementById("paymentsApplyBtn");
+if (paymentsApplyBtn) paymentsApplyBtn.addEventListener("click", renderPayments);
+
+const chartsApplyBtn = document.getElementById("chartsApplyBtn");
+if (chartsApplyBtn) chartsApplyBtn.addEventListener("click", renderCharts);
+
+const historyApplyBtn = document.getElementById("historyApplyBtn");
+if (historyApplyBtn) historyApplyBtn.addEventListener("click", renderHistory);
+
+const itemsClose = document.getElementById("itemsModalClose");
+if (itemsClose) {
+  itemsClose.addEventListener("click", closeItemsModal);
+}
+const itemsModal = document.getElementById("itemsModal");
+if (itemsModal) {
+  itemsModal.addEventListener("click", (ev) => {
+    if (ev.target === itemsModal) {
+      closeItemsModal();
+    }
+  });
+}
+document.addEventListener("keydown", (ev) => {
+  if (ev.key === "Escape") {
+    closeItemsModal();
+  }
+});
+
+window.addEventListener("resize", () => {
+  const chartsPanel = document.getElementById("charts");
+  if (chartsPanel && chartsPanel.classList.contains("active")) {
+    scheduleChartsRender();
+  }
+});
 
 setTab("sales");
-loadReport();
+startReport();
 </script>
 </body>
 </html>
