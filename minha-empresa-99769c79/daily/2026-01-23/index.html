@@ -31,6 +31,8 @@
       --radius: 14px;
       --shadow: 0 18px 45px rgba(16, 40, 36, 0.10);
       --shadow-soft: 0 8px 22px rgba(16, 40, 36, 0.08);
+      --top-row-stick-top: 8px;
+      --tabs-stick-top: 132px;
     }
     * { box-sizing: border-box; }
     html, body { min-height: 100%; }
@@ -56,7 +58,7 @@
       border-radius: 22px;
       box-shadow: var(--shadow);
       padding: 20px;
-      overflow: hidden;
+      overflow: visible;
       background:
         radial-gradient(1200px 420px at 10% -22%, rgba(201, 236, 227, 0.55) 0%, transparent 58%),
         radial-gradient(900px 320px at 102% -24%, rgba(247, 226, 200, 0.65) 0%, transparent 62%),
@@ -93,6 +95,9 @@
       margin-top: 4px;
       margin-bottom: 14px;
       box-shadow: var(--shadow-soft);
+      position: sticky;
+      top: var(--top-row-stick-top);
+      z-index: 14;
     }
     .topRowRight {
       min-width: 220px;
@@ -105,16 +110,16 @@
       flex-wrap: wrap;
     }
     .companyLogoWrap {
-      width: 62px;
-      height: 62px;
-      border-radius: 14px;
+      width: 96px;
+      height: 96px;
+      border-radius: 18px;
       border: 1px solid #d1e3de;
       background: #fff;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 6px;
+      padding: 8px;
       overflow: hidden;
     }
     .companyLogoWrap img {
@@ -149,8 +154,8 @@
       background: rgba(255, 253, 248, 0.84);
       backdrop-filter: blur(4px);
       position: sticky;
-      top: 8px;
-      z-index: 7;
+      top: var(--tabs-stick-top);
+      z-index: 13;
     }
     .tabs button {
       padding: 10px 14px;
@@ -656,10 +661,14 @@
     @media (max-width: 840px) {
       body { padding: 10px; }
       #reportApp { padding: 12px; border-radius: 14px; }
-      .topRow { padding: 12px; }
+      .topRow {
+        padding: 12px;
+        position: static;
+        top: auto;
+      }
       .companyLogoWrap {
-        width: 52px;
-        height: 52px;
+        width: 74px;
+        height: 74px;
       }
       .topRowRight { width: 100%; text-align: left; }
       .tabs {
@@ -1050,6 +1059,23 @@ function setAuthGateVisible(show) {
 function setReportVisible(show) {
   const el = document.getElementById("reportApp");
   if (el) el.style.display = show ? "block" : "none";
+  if (show) {
+    setTimeout(updateStickyOffsets, 0);
+  }
+}
+
+function updateStickyOffsets() {
+  const root = document.documentElement;
+  const topRow = document.querySelector("#reportApp .topRow");
+  if (!root || !topRow) return;
+  if (window.matchMedia && window.matchMedia("(max-width: 840px)").matches) {
+    root.style.setProperty("--tabs-stick-top", "8px");
+    return;
+  }
+  const baseTop = 8;
+  const topRowHeight = Math.ceil(topRow.getBoundingClientRect().height || 0);
+  const tabsTop = baseTop + topRowHeight + 10;
+  root.style.setProperty("--tabs-stick-top", String(tabsTop) + "px");
 }
 
 function setAuthInfo(msg) {
@@ -1130,10 +1156,53 @@ function updateHistoryDateLimits() {
   }
 }
 
-function renderKpis() {
+function getSalesFilterState() {
+  const fromEl = document.getElementById("saleDateFrom");
+  const toEl = document.getElementById("saleDateTo");
+  const statusEl = document.getElementById("saleStatus");
+  const customerEl = document.getElementById("saleCustomer");
+  const phoneEl = document.getElementById("salePhone");
+  const payMethodEl = document.getElementById("salePayMethod");
+  return {
+    from: String((fromEl && fromEl.value) || "").trim(),
+    to: String((toEl && toEl.value) || "").trim(),
+    status: String((statusEl && statusEl.value) || "").trim().toUpperCase(),
+    customer: String((customerEl && customerEl.value) || "").trim().toLowerCase(),
+    phone: String((phoneEl && phoneEl.value) || "").trim().toLowerCase(),
+    payMethod: String((payMethodEl && payMethodEl.value) || "").trim().toUpperCase(),
+  };
+}
+
+function saleRefDate(sale) {
+  return String((sale && (sale.closed_at || sale.created_at)) || "").slice(0, 10);
+}
+
+function saleMatchesFilters(sale, filters) {
+  const f = filters || {};
+  const refDate = saleRefDate(sale);
+  if (f.from && (!refDate || refDate < f.from)) return false;
+  if (f.to && (!refDate || refDate > f.to)) return false;
+  if (f.status && String((sale && sale.status) || "").toUpperCase() !== f.status) return false;
+  if (f.customer && !String((sale && sale.customer_name) || "").toLowerCase().includes(f.customer)) return false;
+  if (f.phone && !String((sale && sale.customer_phone) || "").toLowerCase().includes(f.phone)) return false;
+  if (f.payMethod) {
+    const methods = (sale && sale.payments ? sale.payments : []).map((p) => String((p && p.method) || "").toUpperCase());
+    if (!methods.includes(f.payMethod)) return false;
+  }
+  return true;
+}
+
+function getFilteredSales(filters) {
+  if (!REPORT) return [];
+  const f = filters || getSalesFilterState();
+  return (REPORT.sales || []).filter((sale) => saleMatchesFilters(sale, f));
+}
+
+function renderKpis(salesInput, filtersInput) {
   const box = document.getElementById("kpiGrid");
   if (!box || !REPORT) return;
-  const sales = Array.isArray(REPORT.sales) ? REPORT.sales : [];
+  const filters = filtersInput || getSalesFilterState();
+  const sales = Array.isArray(salesInput) ? salesInput : getFilteredSales(filters);
   let totalNet = 0;
   let totalPaid = 0;
   let totalDiscount = 0;
@@ -1153,7 +1222,12 @@ function renderKpis() {
   const ticketMedio = orderCount > 0 ? Math.round(totalNet / orderCount) : 0;
   const aberto = Math.max(0, orderCount - finishedCount);
   const dayRef = String(REPORT.day || "").trim();
-  const hintDay = dayRef ? ("Base de " + dayRef) : "Periodo completo";
+  let hintDay = dayRef ? ("Base de " + dayRef) : "Periodo completo";
+  if (filters.from || filters.to) {
+    hintDay = "Periodo: " + (filters.from || "(inicio)") + " ate " + (filters.to || "(fim)");
+  } else if (filters.status || filters.customer || filters.phone || filters.payMethod) {
+    hintDay = "Filtro aplicado";
+  }
 
   box.innerHTML = `
     <div class="kpiCard">
@@ -1241,9 +1315,34 @@ function scheduleChartsRender() {
   }, 70);
 }
 
+function applyBranding() {
+  const fallbackName = "Relatorio PDV";
+  const name = String(
+    (REPORT && (REPORT.system_name || REPORT.app_name || REPORT.company_display_name || REPORT.company_name)) || fallbackName
+  ).trim() || fallbackName;
+  const logo = String((REPORT && REPORT.company_logo_data_url) || "").trim();
+  const titleEl = document.getElementById("companyTitle");
+  const logoWrap = document.getElementById("companyLogoWrap");
+  const logoEl = document.getElementById("companyLogo");
+  if (titleEl) titleEl.innerText = name;
+  document.title = name + " | Relatorio";
+  if (logoWrap && logoEl) {
+    if (logo) {
+      logoEl.onload = () => updateStickyOffsets();
+      logoEl.src = logo;
+      logoWrap.style.display = "inline-flex";
+    } else {
+      logoEl.removeAttribute("src");
+      logoWrap.style.display = "none";
+    }
+  }
+  requestAnimationFrame(updateStickyOffsets);
+}
+
 function applyReportData(data) {
   const filtered = applyDeletedOrdersFilter(data);
   REPORT = filtered;
+  applyBranding();
   document.getElementById("generatedAt").innerText = "Gerado em: " + (filtered.generated_at || "-");
   document.getElementById("reportDay").innerText = filtered.day ? ("Dia: " + filtered.day) : "";
   const hint = document.getElementById("deleteHint");
@@ -1253,10 +1352,9 @@ function applyReportData(data) {
       ? ("Excluir venda na base: API " + apiBase)
       : "Excluir venda na base: configure URL da API remota nas Configuracoes do sistema.";
   }
-  renderKpis();
+  renderSales();
   renderPayments();
   renderCash();
-  renderSales();
   const chartsPanel = document.getElementById("charts");
   if (chartsPanel && chartsPanel.classList.contains("active")) {
     renderCharts();
@@ -1509,26 +1607,11 @@ function renderSales() {
   if (!REPORT) return;
   const tb = document.querySelector("#salesTable tbody");
   tb.innerHTML = "";
-  const from = document.getElementById("saleDateFrom").value;
-  const to = document.getElementById("saleDateTo").value;
-  const status = document.getElementById("saleStatus").value.trim().toUpperCase();
-  const customer = document.getElementById("saleCustomer").value.trim().toLowerCase();
-  const phone = document.getElementById("salePhone").value.trim().toLowerCase();
-  const payMethod = document.getElementById("salePayMethod").value.trim().toUpperCase();
-  let found = 0;
+  const filters = getSalesFilterState();
+  const filteredSales = getFilteredSales(filters);
+  renderKpis(filteredSales, filters);
 
-  (REPORT.sales || []).forEach(s => {
-    const refDate = (s.closed_at || s.created_at || "").slice(0, 10);
-    if (from && refDate && refDate < from) return;
-    if (to && refDate && refDate > to) return;
-    if (status && (s.status || "").toUpperCase() !== status) return;
-    if (customer && !(s.customer_name || "").toLowerCase().includes(customer)) return;
-    if (phone && !(s.customer_phone || "").toLowerCase().includes(phone)) return;
-    if (payMethod) {
-      const methods = (s.payments || []).map(p => (p.method || "").toUpperCase());
-      if (!methods.includes(payMethod)) return;
-    }
-    found += 1;
+  filteredSales.forEach(s => {
     const orderId = toInt(s.id || 0);
     const st = String(s.status || "").toUpperCase();
     const statusCss = statusClass(st);
@@ -1553,7 +1636,7 @@ function renderSales() {
     `;
     tb.appendChild(tr);
   });
-  if (!found) {
+  if (!filteredSales.length) {
     appendEmptyRow(tb, 12, "Sem vendas para os filtros informados.");
   }
 }
@@ -1907,6 +1990,7 @@ document.addEventListener("keydown", (ev) => {
 });
 
 window.addEventListener("resize", () => {
+  updateStickyOffsets();
   const chartsPanel = document.getElementById("charts");
   if (chartsPanel && chartsPanel.classList.contains("active")) {
     scheduleChartsRender();
