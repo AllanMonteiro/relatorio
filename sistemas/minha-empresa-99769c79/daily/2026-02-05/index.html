@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Relatorio - PDV</title>
+  <title>Relatorio de Vendas</title>
   <script src="./chart.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
@@ -718,7 +718,7 @@
         </div>
         <div>
           <div class="appTag">Painel online</div>
-          <h1 id="companyTitle">Relatorio PDV</h1>
+          <h1 id="companyTitle">Relatorio de Vendas</h1>
           <div class="meta" id="generatedAt">Gerado em: -</div>
           <div class="meta" id="reportDay"></div>
         </div>
@@ -1236,14 +1236,14 @@ function renderKpis(salesInput, filtersInput) {
       <div class="kpiHint">${hintDay}</div>
     </div>
     <div class="kpiCard alt">
-      <div class="kpiLabel">Pedidos</div>
+      <div class="kpiLabel">Vendas</div>
       <div class="kpiValue">${orderCount}</div>
-      <div class="kpiHint">${finishedCount} finalizados | ${aberto} em aberto</div>
+      <div class="kpiHint">${finishedCount} finalizadas | ${aberto} em aberto</div>
     </div>
     <div class="kpiCard">
       <div class="kpiLabel">Ticket medio</div>
       <div class="kpiValue">${brl(ticketMedio)}</div>
-      <div class="kpiHint">Media por pedido</div>
+      <div class="kpiHint">Media por venda</div>
     </div>
     <div class="kpiCard alt">
       <div class="kpiLabel">Recebido e desconto</div>
@@ -1316,7 +1316,7 @@ function scheduleChartsRender() {
 }
 
 function applyBranding() {
-  const fallbackName = "Relatorio PDV";
+  const fallbackName = "Relatorio de Vendas";
   const name = String(
     (REPORT && (REPORT.system_name || REPORT.app_name || REPORT.company_display_name || REPORT.company_name)) || fallbackName
   ).trim() || fallbackName;
@@ -1418,7 +1418,7 @@ async function markOrderDeletedInCloud(orderId) {
   const rid = String((REPORT && REPORT.report_instance_id) || "").trim() || "default";
   const oid = toInt(orderId);
   if (oid <= 0) {
-    throw new Error("Pedido invalido.");
+    throw new Error("Venda invalida.");
   }
   const docId = rid + "__" + String(oid);
   await firebase
