@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-02 20:02:13",
+  "generated_at": "2026-04-03 20:22:05",
   "day": "",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Mercantil \u00c9 de Casa",
@@ -10,35 +10,36 @@
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
     {
-      "id": 91,
-      "status": "CLOSED",
-      "created_at": "2026-04-02 23:01:28",
-      "closed_at": "2026-04-02 23:02:12",
-      "total_cents": 2190,
+      "id": 93,
+      "status": "CANCELED",
+      "created_at": "2026-04-03 22:52:57",
+      "closed_at": "",
+      "total_cents": 0,
       "discount_cents": 0,
-      "total_liquido_cents": 2190,
-      "total_paid_cents": 2190,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
       "cash_session_id": 17,
       "customer_name": "",
       "customer_phone": "",
-      "payments": [
-        {
-          "method": "CASH",
-          "amount_cents": 2190,
-          "change_cents": 0,
-          "net_cents": 2190
-        }
-      ],
-      "items": [
-        {
-          "name": "Acucar Cristal 5kg",
-          "qty": 1,
-          "unit_price_cents": 2190,
-          "total_cents": 2190,
-          "notes": "Acucar Cristal 5kg"
-        }
-      ],
-      "items_count": 1
+      "payments": [],
+      "items": [],
+      "items_count": 0
+    },
+    {
+      "id": 92,
+      "status": "CANCELED",
+      "created_at": "2026-04-03 00:30:47",
+      "closed_at": "",
+      "total_cents": 0,
+      "discount_cents": 0,
+      "total_liquido_cents": 0,
+      "total_paid_cents": 0,
+      "cash_session_id": 17,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [],
+      "items": [],
+      "items_count": 0
     },
     {
       "id": 89,
@@ -2827,13 +2828,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 80810,
+    "CASH": 78620,
     "PIX": 12933,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
-    "2026-04-02": 2190,
+    "2026-04-03": 0,
     "2026-02-24": 16068,
     "2026-02-22": 11125,
     "2026-02-21": 7233,
@@ -2857,7 +2858,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-04": 2190,
+    "2026-04": 0,
     "2026-02": 389742,
     "2026-01": 39600
   },
@@ -2925,10 +2926,6 @@
     "CocaCola": {
       "qty": 14,
       "total_cents": 14000
-    },
-    "Acucar Cristal 5kg": {
-      "qty": 1,
-      "total_cents": 2190
     }
   },
   "cash_sessions_closed": [
