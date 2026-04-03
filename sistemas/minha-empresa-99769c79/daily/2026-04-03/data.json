@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-03 20:22:06",
+  "generated_at": "2026-04-03 20:26:33",
   "day": "2026-04-03",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Mercantil \u00c9 de Casa",
@@ -50,5 +50,23 @@
     "2026-04": 0
   },
   "sales_by_product": {},
-  "cash_sessions_closed": []
+  "cash_sessions_closed": [
+    {
+      "session_id": 17,
+      "opening_cash": 10000,
+      "cash_in": 6400,
+      "pix_in": 4725,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
+      "card_in": 0,
+      "mov_in": 0,
+      "mov_out": 0,
+      "expected_cash": 16400,
+      "counted_cash": 16400,
+      "diff_cash": 0,
+      "opened_at": "2026-02-21 14:37:53",
+      "closed_at": "2026-04-03 23:26:32",
+      "notes": ""
+    }
+  ]
 }
