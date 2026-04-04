@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-04 14:53:09",
+  "generated_at": "2026-04-04 14:59:26",
   "day": "",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Mercantil \u00c9 de Casa",
@@ -9,6 +9,37 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 143,
+      "status": "CLOSED",
+      "created_at": "2026-04-04 17:59:01",
+      "closed_at": "2026-04-04 17:59:26",
+      "total_cents": 390,
+      "discount_cents": 0,
+      "total_liquido_cents": 390,
+      "total_paid_cents": 390,
+      "cash_session_id": 20,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 390,
+          "change_cents": 0,
+          "net_cents": 390
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        }
+      ],
+      "items_count": 1
+    },
     {
       "id": 142,
       "status": "CLOSED",
@@ -3681,13 +3712,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 81590,
+    "CASH": 81980,
     "PIX": 12933,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
-    "2026-04-04": 4530,
+    "2026-04-04": 4920,
     "2026-04-03": 0,
     "2026-02-24": 16068,
     "2026-02-22": 11125,
@@ -3712,7 +3743,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-04": 4530,
+    "2026-04": 4920,
     "2026-02": 389742,
     "2026-01": 39600
   },
@@ -3766,8 +3797,8 @@
       "total_cents": 6300
     },
     "Agua Mineral 1.5L": {
-      "qty": 8,
-      "total_cents": 3120
+      "qty": 9,
+      "total_cents": 3510
     },
     "Presunto Cozido Kg": {
       "qty": 1,
