@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-04 15:07:43",
+  "generated_at": "2026-04-05 18:38:22",
   "day": "2026-01-14",
   "report_instance_id": "minha-empresa-99769c79",
-  "system_name": "Mercantil \u00c9 de Casa",
-  "company_name": "Nortis",
+  "system_name": "Supermercado Desktop",
+  "company_name": "Nortis Sistemas",
   "company_legal_name": "",
-  "company_display_name": "Nortis",
+  "company_display_name": "Nortis Sistemas",
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
