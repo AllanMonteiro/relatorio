@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 19:16:10",
+  "generated_at": "2026-04-05 19:23:27",
   "day": "2026-04-05",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,57 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 150,
+      "status": "CLOSED",
+      "created_at": "2026-04-05 22:22:15",
+      "closed_at": "2026-04-05 22:23:23",
+      "total_cents": 14190,
+      "discount_cents": 0,
+      "total_liquido_cents": 14190,
+      "total_paid_cents": 14190,
+      "cash_session_id": 21,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 10000,
+          "change_cents": 0,
+          "net_cents": 10000
+        },
+        {
+          "method": "CARD_DEBIT",
+          "amount_cents": 4190,
+          "change_cents": 0,
+          "net_cents": 4190
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        },
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        },
+        {
+          "name": "Banana Prata Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        }
+      ],
+      "items_count": 21
+    },
     {
       "id": 149,
       "status": "CLOSED",
@@ -187,30 +238,31 @@
     }
   ],
   "payments_summary": {
-    "CASH": 17820
+    "CASH": 27820,
+    "CARD_DEBIT": 4190
   },
   "sales_by_day": {
-    "2026-04-05": 18210
+    "2026-04-05": 32400
   },
   "sales_by_month": {
-    "2026-04": 18210
+    "2026-04": 32400
   },
   "sales_by_product": {
     "Batata Inglesa Kg": {
-      "qty": 17,
-      "total_cents": 11730
+      "qty": 27,
+      "total_cents": 18630
     },
     "Banana Prata Kg": {
-      "qty": 5,
-      "total_cents": 3450
+      "qty": 15,
+      "total_cents": 10350
     },
     "Cerveja Lata 350ml": {
       "qty": 3,
       "total_cents": 1470
     },
     "Agua Mineral 1.5L": {
-      "qty": 4,
-      "total_cents": 1560
+      "qty": 5,
+      "total_cents": 1950
     }
   },
   "cash_sessions_closed": [
