@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 19:23:27",
+  "generated_at": "2026-04-05 19:29:54",
   "day": "2026-04-05",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,50 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 151,
+      "status": "CLOSED",
+      "created_at": "2026-04-05 22:29:34",
+      "closed_at": "2026-04-05 22:29:50",
+      "total_cents": 780,
+      "discount_cents": 0,
+      "total_liquido_cents": 780,
+      "total_paid_cents": 780,
+      "cash_session_id": 21,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 200,
+          "change_cents": 0,
+          "net_cents": 200
+        },
+        {
+          "method": "CARD_DEBIT",
+          "amount_cents": 580,
+          "change_cents": 0,
+          "net_cents": 580
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        },
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        }
+      ],
+      "items_count": 2
+    },
     {
       "id": 150,
       "status": "CLOSED",
@@ -238,14 +282,14 @@
     }
   ],
   "payments_summary": {
-    "CASH": 27820,
-    "CARD_DEBIT": 4190
+    "CASH": 28020,
+    "CARD_DEBIT": 4770
   },
   "sales_by_day": {
-    "2026-04-05": 32400
+    "2026-04-05": 33180
   },
   "sales_by_month": {
-    "2026-04": 32400
+    "2026-04": 33180
   },
   "sales_by_product": {
     "Batata Inglesa Kg": {
@@ -261,8 +305,8 @@
       "total_cents": 1470
     },
     "Agua Mineral 1.5L": {
-      "qty": 5,
-      "total_cents": 1950
+      "qty": 7,
+      "total_cents": 2730
     }
   },
   "cash_sessions_closed": [
