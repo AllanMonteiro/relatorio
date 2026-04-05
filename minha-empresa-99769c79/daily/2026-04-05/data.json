@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 18:38:23",
+  "generated_at": "2026-04-05 18:39:39",
   "day": "2026-04-05",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,44 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 146,
+      "status": "CLOSED",
+      "created_at": "2026-04-05 21:39:09",
+      "closed_at": "2026-04-05 21:39:38",
+      "total_cents": 3840,
+      "discount_cents": 0,
+      "total_liquido_cents": 3840,
+      "total_paid_cents": 3840,
+      "cash_session_id": 20,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 3840,
+          "change_cents": 0,
+          "net_cents": 3840
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        },
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 5,
+          "unit_price_cents": 690,
+          "total_cents": 3450,
+          "notes": ""
+        }
+      ],
+      "items_count": 6
+    },
     {
       "id": 145,
       "status": "CLOSED",
@@ -56,18 +94,18 @@
     }
   ],
   "payments_summary": {
-    "CASH": 6300
+    "CASH": 10140
   },
   "sales_by_day": {
-    "2026-04-05": 6300
+    "2026-04-05": 10140
   },
   "sales_by_month": {
-    "2026-04": 6300
+    "2026-04": 10140
   },
   "sales_by_product": {
     "Batata Inglesa Kg": {
-      "qty": 2,
-      "total_cents": 1380
+      "qty": 7,
+      "total_cents": 4830
     },
     "Banana Prata Kg": {
       "qty": 5,
@@ -76,6 +114,10 @@
     "Cerveja Lata 350ml": {
       "qty": 3,
       "total_cents": 1470
+    },
+    "Agua Mineral 1.5L": {
+      "qty": 1,
+      "total_cents": 390
     }
   },
   "cash_sessions_closed": []
