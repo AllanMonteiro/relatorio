@@ -1,14 +1,59 @@
 {
-  "generated_at": "2026-04-04 15:07:43",
+  "generated_at": "2026-04-05 18:38:22",
   "day": "",
   "report_instance_id": "minha-empresa-99769c79",
-  "system_name": "Mercantil \u00c9 de Casa",
-  "company_name": "Nortis",
+  "system_name": "Supermercado Desktop",
+  "company_name": "Nortis Sistemas",
   "company_legal_name": "",
-  "company_display_name": "Nortis",
+  "company_display_name": "Nortis Sistemas",
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 145,
+      "status": "CLOSED",
+      "created_at": "2026-04-05 21:36:38",
+      "closed_at": "2026-04-05 21:38:20",
+      "total_cents": 6300,
+      "discount_cents": 0,
+      "total_liquido_cents": 6300,
+      "total_paid_cents": 6300,
+      "cash_session_id": 20,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 6300,
+          "change_cents": 0,
+          "net_cents": 6300
+        }
+      ],
+      "items": [
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 2,
+          "unit_price_cents": 690,
+          "total_cents": 1380,
+          "notes": ""
+        },
+        {
+          "name": "Banana Prata Kg",
+          "qty": 5,
+          "unit_price_cents": 690,
+          "total_cents": 3450,
+          "notes": ""
+        },
+        {
+          "name": "Cerveja Lata 350ml",
+          "qty": 3,
+          "unit_price_cents": 490,
+          "total_cents": 1470,
+          "notes": ""
+        }
+      ],
+      "items_count": 10
+    },
     {
       "id": 144,
       "status": "CLOSED",
@@ -3743,12 +3788,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 82370,
+    "CASH": 88670,
     "PIX": 12933,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
+    "2026-04-05": 6300,
     "2026-04-04": 5310,
     "2026-04-03": 0,
     "2026-02-24": 16068,
@@ -3774,7 +3820,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-04": 5310,
+    "2026-04": 11610,
     "2026-02": 389742,
     "2026-01": 39600
   },
@@ -3846,6 +3892,18 @@
     "Acucar Cristal 5kg": {
       "qty": 1,
       "total_cents": 2190
+    },
+    "Batata Inglesa Kg": {
+      "qty": 2,
+      "total_cents": 1380
+    },
+    "Banana Prata Kg": {
+      "qty": 5,
+      "total_cents": 3450
+    },
+    "Cerveja Lata 350ml": {
+      "qty": 3,
+      "total_cents": 1470
     }
   },
   "cash_sessions_closed": [
