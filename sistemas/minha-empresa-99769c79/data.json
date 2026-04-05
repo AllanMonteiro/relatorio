@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 19:14:04",
+  "generated_at": "2026-04-05 19:15:40",
   "day": "",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,44 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 149,
+      "status": "CLOSED",
+      "created_at": "2026-04-05 22:15:03",
+      "closed_at": "2026-04-05 22:15:39",
+      "total_cents": 7290,
+      "discount_cents": 0,
+      "total_liquido_cents": 7290,
+      "total_paid_cents": 7290,
+      "cash_session_id": 20,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 7290,
+          "change_cents": 0,
+          "net_cents": 7290
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 1,
+          "unit_price_cents": 390,
+          "total_cents": 390,
+          "notes": ""
+        },
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        }
+      ],
+      "items_count": 11
+    },
     {
       "id": 148,
       "status": "CLOSED",
@@ -3881,13 +3919,13 @@
     }
   ],
   "payments_summary": {
-    "CASH": 92900,
+    "CASH": 100190,
     "PIX": 12933,
     "CARD": 2400,
     "DINHEIRO": 1000
   },
   "sales_by_day": {
-    "2026-04-05": 10920,
+    "2026-04-05": 18210,
     "2026-04-04": 5310,
     "2026-04-03": 0,
     "2026-02-24": 16068,
@@ -3913,7 +3951,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-04": 16230,
+    "2026-04": 23520,
     "2026-02": 389742,
     "2026-01": 39600
   },
@@ -3967,8 +4005,8 @@
       "total_cents": 6300
     },
     "Agua Mineral 1.5L": {
-      "qty": 13,
-      "total_cents": 5070
+      "qty": 14,
+      "total_cents": 5460
     },
     "Presunto Cozido Kg": {
       "qty": 1,
@@ -3987,8 +4025,8 @@
       "total_cents": 2190
     },
     "Batata Inglesa Kg": {
-      "qty": 7,
-      "total_cents": 4830
+      "qty": 17,
+      "total_cents": 11730
     },
     "Banana Prata Kg": {
       "qty": 5,
