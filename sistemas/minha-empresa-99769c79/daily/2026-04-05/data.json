@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 19:15:42",
+  "generated_at": "2026-04-05 19:16:10",
   "day": "2026-04-05",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -213,5 +213,23 @@
       "total_cents": 1560
     }
   },
-  "cash_sessions_closed": []
+  "cash_sessions_closed": [
+    {
+      "session_id": 20,
+      "opening_cash": 52033,
+      "cash_in": 21570,
+      "pix_in": 0,
+      "card_debit_in": 0,
+      "card_credit_in": 0,
+      "card_in": 0,
+      "mov_in": 0,
+      "mov_out": 0,
+      "expected_cash": 73603,
+      "counted_cash": 73603,
+      "diff_cash": 0,
+      "opened_at": "2026-04-04 12:00:59",
+      "closed_at": "2026-04-05 22:16:08",
+      "notes": ""
+    }
+  ]
 }
