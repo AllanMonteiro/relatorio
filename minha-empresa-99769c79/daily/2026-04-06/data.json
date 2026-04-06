@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-04-06 16:18:49",
+  "day": "2026-04-06",
+  "report_instance_id": "minha-empresa-99769c79",
+  "system_name": "Supermercado Desktop",
+  "company_name": "Nortis Sistemas",
+  "company_legal_name": "",
+  "company_display_name": "Nortis Sistemas",
+  "company_logo_data_url": "",
+  "delete_api_url": "http://127.0.0.1:8765",
+  "sales": [
+    {
+      "id": 152,
+      "status": "CLOSED",
+      "created_at": "2026-04-06 19:18:06",
+      "closed_at": "2026-04-06 19:18:46",
+      "total_cents": 8460,
+      "discount_cents": 0,
+      "total_liquido_cents": 8460,
+      "total_paid_cents": 8460,
+      "cash_session_id": 22,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 5000,
+          "change_cents": 0,
+          "net_cents": 5000
+        },
+        {
+          "method": "PIX",
+          "amount_cents": 3460,
+          "change_cents": 0,
+          "net_cents": 3460
+        }
+      ],
+      "items": [
+        {
+          "name": "Agua Mineral 1.5L",
+          "qty": 4,
+          "unit_price_cents": 390,
+          "total_cents": 1560,
+          "notes": ""
+        },
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        }
+      ],
+      "items_count": 14
+    }
+  ],
+  "payments_summary": {
+    "CASH": 5000,
+    "PIX": 3460
+  },
+  "sales_by_day": {
+    "2026-04-06": 8460
+  },
+  "sales_by_month": {
+    "2026-04": 8460
+  },
+  "sales_by_product": {
+    "Agua Mineral 1.5L": {
+      "qty": 4,
+      "total_cents": 1560
+    },
+    "Batata Inglesa Kg": {
+      "qty": 10,
+      "total_cents": 6900
+    }
+  },
+  "cash_sessions_closed": []
+}
