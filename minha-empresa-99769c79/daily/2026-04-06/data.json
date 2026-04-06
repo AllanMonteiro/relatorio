@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06 16:18:49",
+  "generated_at": "2026-04-06 16:24:42",
   "day": "2026-04-06",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,37 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 153,
+      "status": "CLOSED",
+      "created_at": "2026-04-06 19:22:52",
+      "closed_at": "2026-04-06 19:24:36",
+      "total_cents": 6900,
+      "discount_cents": 0,
+      "total_liquido_cents": 6900,
+      "total_paid_cents": 6900,
+      "cash_session_id": 22,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 26900,
+          "change_cents": 20000,
+          "net_cents": 6900
+        }
+      ],
+      "items": [
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        }
+      ],
+      "items_count": 10
+    },
     {
       "id": 152,
       "status": "CLOSED",
@@ -55,14 +86,14 @@
     }
   ],
   "payments_summary": {
-    "CASH": 5000,
+    "CASH": 11900,
     "PIX": 3460
   },
   "sales_by_day": {
-    "2026-04-06": 8460
+    "2026-04-06": 15360
   },
   "sales_by_month": {
-    "2026-04": 8460
+    "2026-04": 15360
   },
   "sales_by_product": {
     "Agua Mineral 1.5L": {
@@ -70,8 +101,8 @@
       "total_cents": 1560
     },
     "Batata Inglesa Kg": {
-      "qty": 10,
-      "total_cents": 6900
+      "qty": 20,
+      "total_cents": 13800
     }
   },
   "cash_sessions_closed": []
