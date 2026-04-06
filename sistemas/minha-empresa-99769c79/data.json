@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06 16:18:47",
+  "generated_at": "2026-04-06 16:24:38",
   "day": "",
   "report_instance_id": "minha-empresa-99769c79",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,37 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 153,
+      "status": "CLOSED",
+      "created_at": "2026-04-06 19:22:52",
+      "closed_at": "2026-04-06 19:24:36",
+      "total_cents": 6900,
+      "discount_cents": 0,
+      "total_liquido_cents": 6900,
+      "total_paid_cents": 6900,
+      "cash_session_id": 22,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 26900,
+          "change_cents": 20000,
+          "net_cents": 6900
+        }
+      ],
+      "items": [
+        {
+          "name": "Batata Inglesa Kg",
+          "qty": 10,
+          "unit_price_cents": 690,
+          "total_cents": 6900,
+          "notes": ""
+        }
+      ],
+      "items_count": 10
+    },
     {
       "id": 152,
       "status": "CLOSED",
@@ -4058,14 +4089,14 @@
     }
   ],
   "payments_summary": {
-    "CASH": 115390,
+    "CASH": 122290,
     "PIX": 16393,
     "CARD": 2400,
     "DINHEIRO": 1000,
     "CARD_DEBIT": 4770
   },
   "sales_by_day": {
-    "2026-04-06": 8460,
+    "2026-04-06": 15360,
     "2026-04-05": 33180,
     "2026-04-04": 5310,
     "2026-04-03": 0,
@@ -4092,7 +4123,7 @@
     "2026-01-11": 4600
   },
   "sales_by_month": {
-    "2026-04": 46950,
+    "2026-04": 53850,
     "2026-02": 389742,
     "2026-01": 39600
   },
@@ -4166,8 +4197,8 @@
       "total_cents": 2190
     },
     "Batata Inglesa Kg": {
-      "qty": 37,
-      "total_cents": 25530
+      "qty": 47,
+      "total_cents": 32430
     },
     "Banana Prata Kg": {
       "qty": 15,
