@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-04-23 17:27:23",
+  "day": "",
+  "report_instance_id": "mercantil-decasa-pos",
+  "system_name": "Supermercado Desktop",
+  "company_name": "Mercantil & Decasa",
+  "company_legal_name": "",
+  "company_display_name": "Mercantil & Decasa",
+  "company_logo_data_url": "",
+  "delete_api_url": "http://127.0.0.1:8765",
+  "sales": [
+    {
+      "id": 156,
+      "status": "CLOSED",
+      "created_at": "2026-04-23 20:24:44",
+      "closed_at": "2026-04-23 20:25:06",
+      "total_cents": 12000,
+      "discount_cents": 0,
+      "total_liquido_cents": 12000,
+      "total_paid_cents": 0,
+      "cash_session_id": 23,
+      "customer_name": "Allan",
+      "customer_phone": "091991960525",
+      "payments": [],
+      "items": [
+        {
+          "name": "Farinha",
+          "qty": 1,
+          "unit_price_cents": 12000,
+          "total_cents": 12000,
+          "notes": "Farinha (10,000 kg)"
+        }
+      ],
+      "items_count": 1
+    },
+    {
+      "id": 155,
+      "status": "CLOSED",
+      "created_at": "2026-04-23 20:24:29",
+      "closed_at": "2026-04-23 20:27:15",
+      "total_cents": 14400,
+      "discount_cents": 0,
+      "total_liquido_cents": 14400,
+      "total_paid_cents": 14400,
+      "cash_session_id": 23,
+      "customer_name": "",
+      "customer_phone": "",
+      "payments": [
+        {
+          "method": "CASH",
+          "amount_cents": 14400,
+          "change_cents": 0,
+          "net_cents": 14400
+        }
+      ],
+      "items": [
+        {
+          "name": "Farinha",
+          "qty": 1,
+          "unit_price_cents": 14400,
+          "total_cents": 14400,
+          "notes": "Farinha (12,000 kg)"
+        }
+      ],
+      "items_count": 1
+    }
+  ],
+  "payments_summary": {
+    "CASH": 14400
+  },
+  "sales_by_day": {
+    "2026-04-23": 26400
+  },
+  "sales_by_month": {
+    "2026-04": 26400
+  },
+  "sales_by_product": {
+    "Farinha": {
+      "qty": 2,
+      "total_cents": 26400
+    }
+  },
+  "cash_sessions_closed": []
+}
