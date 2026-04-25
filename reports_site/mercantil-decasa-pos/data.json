@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25 09:51:24",
+  "generated_at": "2026-04-25 11:07:38",
   "day": "",
   "report_instance_id": "mercantil-decasa-pos",
   "system_name": "Supermercado Desktop",
@@ -9,6 +9,30 @@
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 156,
+      "status": "CLOSED",
+      "created_at": "2026-04-25 14:07:04",
+      "closed_at": "2026-04-25 14:07:38",
+      "total_cents": 750,
+      "discount_cents": 0,
+      "total_liquido_cents": 750,
+      "total_paid_cents": 0,
+      "cash_session_id": 23,
+      "customer_name": "Allan",
+      "customer_phone": "091980184416",
+      "payments": [],
+      "items": [
+        {
+          "name": "Farinha",
+          "qty": 1,
+          "unit_price_cents": 750,
+          "total_cents": 750,
+          "notes": "Farinha (0,750 kg)"
+        }
+      ],
+      "items_count": 1
+    },
     {
       "id": 155,
       "status": "CLOSED",
@@ -52,15 +76,15 @@
     "CASH": 1100
   },
   "sales_by_day": {
-    "2026-04-25": 1100
+    "2026-04-25": 1850
   },
   "sales_by_month": {
-    "2026-04": 1100
+    "2026-04": 1850
   },
   "sales_by_product": {
     "Farinha": {
-      "qty": 2,
-      "total_cents": 1100
+      "qty": 3,
+      "total_cents": 1850
     }
   },
   "cash_sessions_closed": []
