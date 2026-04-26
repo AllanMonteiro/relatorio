@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26 14:09:31",
+  "generated_at": "2026-04-26 15:37:00",
   "day": "2026-04-26",
   "report_instance_id": "mercantil-decasa-pos",
   "system_name": "Supermercado Desktop",
@@ -12,71 +12,106 @@
     {
       "id": 155,
       "status": "CLOSED",
-      "created_at": "2026-04-26 17:09:08",
-      "closed_at": "2026-04-26 17:09:31",
-      "total_cents": 1200,
+      "created_at": "2026-04-26 18:36:36",
+      "closed_at": "2026-04-26 18:36:59",
+      "total_cents": 3000,
       "discount_cents": 0,
-      "total_liquido_cents": 1200,
+      "total_liquido_cents": 3000,
       "total_paid_cents": 0,
       "cash_session_id": 23,
-      "customer_name": "Allan",
+      "customer_name": "Allan Monteiro",
       "customer_phone": "",
       "payments": [],
       "items": [
         {
-          "name": "Farina",
+          "name": "Cigarro",
           "qty": 1,
-          "unit_price_cents": 1200,
-          "total_cents": 1200,
-          "notes": "Farina (1,000 kg)"
+          "unit_price_cents": 1000,
+          "total_cents": 1000,
+          "notes": ""
+        },
+        {
+          "name": "Farinha",
+          "qty": 1,
+          "unit_price_cents": 2000,
+          "total_cents": 2000,
+          "notes": ""
         }
       ],
-      "items_count": 1
+      "items_count": 2
     }
   ],
   "payments_summary": {},
   "sales_by_day": {
-    "2026-04-26": 1200
+    "2026-04-26": 3000
   },
   "sales_by_month": {
-    "2026-04": 1200
+    "2026-04": 3000
   },
   "sales_by_product": {
-    "Farina": {
+    "Cigarro": {
       "qty": 1,
-      "total_cents": 1200
+      "total_cents": 1000
+    },
+    "Farinha": {
+      "qty": 1,
+      "total_cents": 2000
     }
   },
   "cash_sessions_closed": [],
   "receivables_grouped": [
     {
       "customer_id": 1,
-      "customer_name": "Allan",
+      "customer_name": "Allan Monteiro",
       "customer_phone": "",
       "receivables": [
         {
           "id": 1,
           "order_id": 155,
           "customer_id": 1,
-          "customer_name": "Allan",
+          "customer_name": "Allan Monteiro",
           "customer_phone": "",
-          "original_amount_cents": 1200,
-          "open_amount_cents": 1200,
+          "original_amount_cents": 3000,
+          "open_amount_cents": 3000,
           "paid_amount_cents": 0,
           "due_date": "",
           "status": "OPEN",
           "notes": "",
-          "created_at": "2026-04-26 17:09:31",
+          "created_at": "2026-04-26 18:36:59",
           "closed_at": "",
-          "detail_date": "2026-04-26 17:09:31",
-          "item_summary": "Farina (1,000 kg)"
+          "detail_date": "2026-04-26 18:36:59",
+          "item_summary": "Cigarro | Farinha",
+          "items": [
+            {
+              "id": 195,
+              "product_id": 65,
+              "name": "Cigarro",
+              "notes": "",
+              "qty": 1,
+              "unit_price_cents": 1000,
+              "line_total_cents": 1000,
+              "stock_qty": 1.0,
+              "sold_by_kg": false
+            },
+            {
+              "id": 196,
+              "product_id": 64,
+              "name": "Farinha",
+              "notes": "",
+              "qty": 1,
+              "unit_price_cents": 2000,
+              "line_total_cents": 2000,
+              "stock_qty": 1.0,
+              "sold_by_kg": false
+            }
+          ]
         }
       ],
       "orders_count": 1,
-      "original_amount_cents": 1200,
-      "open_amount_cents": 1200,
+      "original_amount_cents": 3000,
+      "open_amount_cents": 3000,
       "paid_amount_cents": 0,
-      "first_purchase_date": "2026-04-26 17:09:31",
+      "first_purchase_date": "2026-04-26 18:36:59",
       "latest_due_date": "",
       "status": "OPEN"
     }
