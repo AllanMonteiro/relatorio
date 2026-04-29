@@ -1,14 +1,45 @@
 {
-  "generated_at": "2026-04-26 15:37:00",
+  "generated_at": "2026-04-29 16:42:45",
   "day": "2026-04-26",
   "report_instance_id": "mercantil-decasa-pos",
   "system_name": "Supermercado Desktop",
-  "company_name": "Mercantil & Decasa",
+  "company_name": "BENG\u00d4 A\u00c7A\u00cd",
   "company_legal_name": "",
-  "company_display_name": "Mercantil & Decasa",
+  "company_display_name": "BENG\u00d4 A\u00c7A\u00cd",
   "company_logo_data_url": "",
   "delete_api_url": "http://127.0.0.1:8765",
   "sales": [
+    {
+      "id": 156,
+      "status": "CLOSED",
+      "created_at": "2026-04-26 18:38:03",
+      "closed_at": "2026-04-26 18:38:32",
+      "total_cents": 41000,
+      "discount_cents": 0,
+      "total_liquido_cents": 41000,
+      "total_paid_cents": 0,
+      "cash_session_id": 23,
+      "customer_name": "Allan Monteiro",
+      "customer_phone": "",
+      "payments": [],
+      "items": [
+        {
+          "name": "Farinha",
+          "qty": 20,
+          "unit_price_cents": 2000,
+          "total_cents": 40000,
+          "notes": ""
+        },
+        {
+          "name": "Cigarro",
+          "qty": 1,
+          "unit_price_cents": 1000,
+          "total_cents": 1000,
+          "notes": ""
+        }
+      ],
+      "items_count": 21
+    },
     {
       "id": 155,
       "status": "CLOSED",
@@ -43,19 +74,19 @@
   ],
   "payments_summary": {},
   "sales_by_day": {
-    "2026-04-26": 3000
+    "2026-04-26": 44000
   },
   "sales_by_month": {
-    "2026-04": 3000
+    "2026-04": 44000
   },
   "sales_by_product": {
     "Cigarro": {
-      "qty": 1,
-      "total_cents": 1000
+      "qty": 2,
+      "total_cents": 2000
     },
     "Farinha": {
-      "qty": 1,
-      "total_cents": 2000
+      "qty": 21,
+      "total_cents": 42000
     }
   },
   "cash_sessions_closed": [],
@@ -66,24 +97,35 @@
       "customer_phone": "",
       "receivables": [
         {
-          "id": 1,
-          "order_id": 155,
+          "id": 2,
+          "order_id": 156,
           "customer_id": 1,
           "customer_name": "Allan Monteiro",
           "customer_phone": "",
-          "original_amount_cents": 3000,
-          "open_amount_cents": 3000,
-          "paid_amount_cents": 0,
+          "original_amount_cents": 41000,
+          "open_amount_cents": 24000,
+          "paid_amount_cents": 17000,
           "due_date": "",
-          "status": "OPEN",
+          "status": "PARTIAL",
           "notes": "",
-          "created_at": "2026-04-26 18:36:59",
+          "created_at": "2026-04-26 18:38:32",
           "closed_at": "",
-          "detail_date": "2026-04-26 18:36:59",
-          "item_summary": "Cigarro | Farinha",
+          "detail_date": "2026-04-26 18:38:32",
+          "item_summary": "Farinha | Cigarro",
           "items": [
             {
-              "id": 195,
+              "id": 197,
+              "product_id": 64,
+              "name": "Farinha",
+              "notes": "",
+              "qty": 20,
+              "unit_price_cents": 2000,
+              "line_total_cents": 40000,
+              "stock_qty": 20.0,
+              "sold_by_kg": false
+            },
+            {
+              "id": 198,
               "product_id": 65,
               "name": "Cigarro",
               "notes": "",
@@ -92,28 +134,17 @@
               "line_total_cents": 1000,
               "stock_qty": 1.0,
               "sold_by_kg": false
-            },
-            {
-              "id": 196,
-              "product_id": 64,
-              "name": "Farinha",
-              "notes": "",
-              "qty": 1,
-              "unit_price_cents": 2000,
-              "line_total_cents": 2000,
-              "stock_qty": 1.0,
-              "sold_by_kg": false
             }
           ]
         }
       ],
       "orders_count": 1,
-      "original_amount_cents": 3000,
-      "open_amount_cents": 3000,
-      "paid_amount_cents": 0,
-      "first_purchase_date": "2026-04-26 18:36:59",
+      "original_amount_cents": 41000,
+      "open_amount_cents": 24000,
+      "paid_amount_cents": 17000,
+      "first_purchase_date": "2026-04-26 18:38:32",
       "latest_due_date": "",
-      "status": "OPEN"
+      "status": "PARTIAL"
     }
   ]
 }
